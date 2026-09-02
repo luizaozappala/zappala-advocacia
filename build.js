@@ -31,6 +31,15 @@ function materializeBinary(targetName) {
   fs.writeFileSync(target, Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64'));
 }
 
+function injectStylesheet(htmlName, href) {
+  const htmlPath = path.join(dist, htmlName);
+  if (!fs.existsSync(htmlPath)) return;
+  let html = fs.readFileSync(htmlPath, 'utf8');
+  const tag = `<link rel="stylesheet" href="${href}">`;
+  if (!html.includes(href)) html = html.replace('</head>', `${tag}\n</head>`);
+  fs.writeFileSync(htmlPath, html);
+}
+
 materializeHtml('index.html');
 materializeHtml('equipe.html');
 
@@ -44,13 +53,14 @@ for (const dir of ['assets', 'admin']) {
   if (fs.existsSync(src)) fs.cpSync(src, path.join(dist, dir), { recursive: true });
 }
 
-const indexPath = path.join(dist, 'index.html');
-if (fs.existsSync(indexPath)) {
-  let html = fs.readFileSync(indexPath, 'utf8');
-  const teamCss = '<link rel="stylesheet" href="assets/team-section.css">';
-  if (!html.includes('assets/team-section.css')) html = html.replace('</head>', `${teamCss}\n</head>`);
-  fs.writeFileSync(indexPath, html);
+/* A atmosfera global é carregada em todas as páginas públicas do site.
+   O painel /admin fica de fora para preservar a interface do CMS. */
+for (const name of ['index.html', 'equipe.html', 'informativos.html', 'publicacao.html', '404.html']) {
+  injectStylesheet(name, 'assets/site-atmosphere.css');
 }
+
+/* A home mantém um tratamento mais elaborado para o bloco Equipe. */
+injectStylesheet('index.html', 'assets/team-section.css');
 
 materializeBinary('assets/gleice-zappala.webp');
 materializeBinary('assets/luiza-zappala.webp');
