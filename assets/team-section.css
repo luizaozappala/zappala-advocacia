@@ -1,0 +1,50 @@
+/* Equipe — profundidade em ardósia, com degradê, vinheta e halos suaves */
+.team-teaser{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  color:#EDE8DD!important;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(214,222,230,.13) 0%,rgba(214,222,230,0) 34%),
+    radial-gradient(circle at 82% 78%,rgba(199,210,221,.10) 0%,rgba(199,210,221,0) 30%),
+    linear-gradient(135deg,#6F8194 0%,#7D90A4 46%,#71869A 100%)!important;
+}
+.team-teaser::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  width:auto!important;
+  height:auto!important;
+  border-radius:0!important;
+  pointer-events:none;
+  z-index:0!important;
+  animation:none!important;
+  background:radial-gradient(ellipse at center,rgba(20,26,33,0) 38%,rgba(20,26,33,.08) 70%,rgba(20,26,33,.21) 100%)!important;
+}
+.team-teaser::after{
+  content:"";
+  position:absolute;
+  inset:-15%;
+  pointer-events:none;
+  z-index:0;
+  filter:blur(10px);
+  background:
+    radial-gradient(circle at 82% 20%,rgba(225,232,238,.22) 0%,rgba(209,220,229,.11) 18%,rgba(209,220,229,0) 39%),
+    radial-gradient(circle at 14% 80%,rgba(210,220,229,.15) 0%,rgba(194,207,218,.07) 20%,rgba(194,207,218,0) 40%);
+  animation:teamAmbient 24s ease-in-out infinite alternate;
+}
+.team-teaser>.wrap{position:relative;z-index:1}
+@keyframes teamAmbient{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-16px,12px,0) scale(1.025)}
+  100%{transform:translate3d(18px,-10px,0) scale(.985)}
+}
+.team-teaser .rail::before{background:rgba(237,232,221,.25)!important}
+.team-teaser .rail__label{color:#D8E0E8!important}
+.team-teaser h2,.team-teaser h3{color:#F1ECE0!important}
+.team-teaser .lede,.team-teaser .team-mini p{color:rgba(241,236,224,.88)!important}
+.team-teaser .team-mini{border-top-color:rgba(237,232,221,.27)!important}
+.team-teaser .team-mini__role{color:#D8E0E8!important}
+.team-teaser .text-link{color:#F1ECE0!important;border-bottom-color:rgba(241,236,224,.40)!important}
+.team-teaser .text-link:hover{color:#fff!important;border-bottom-color:#F1ECE0!important}
+@media (prefers-reduced-motion:reduce){.team-teaser::after{animation:none!important}}
