@@ -17,16 +17,30 @@
   border-color:#C6BEAF!important;
   background:transparent!important;
 }
-.masthead .brand{
-  display:block!important;
-  width:300px;
-  height:54px;
-  flex:0 0 300px;
+.masthead .brand,
+.mast .brand{
+  display:inline-flex!important;
+  align-items:center;
+  flex:0 0 auto;
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
   font-size:0!important;
   line-height:0;
-  background:url('logo-zappala-header.png') left center / contain no-repeat;
+  background:none!important;
+  text-decoration:none;
 }
-.masthead .brand em{display:none!important}
+.masthead .brand img,
+.mast .brand img{
+  display:block!important;
+  width:260px;
+  max-width:32vw;
+  height:auto;
+  max-height:66px;
+  object-fit:contain;
+  object-position:left center;
+}
+.masthead .brand em,.mast .brand em{display:none!important}
 
 /* Página individual de publicação usa .mast em vez de .masthead. */
 .mast{
@@ -36,24 +50,14 @@
   backdrop-filter:blur(10px);
   padding:11px 0!important;
 }
-.mast .brand{
-  display:block!important;
-  width:300px;
-  height:54px;
-  flex:0 0 300px;
-  font-size:0!important;
-  line-height:0;
-  background:url('logo-zappala-header.png') left center / contain no-repeat;
-}
-.mast .brand em{display:none!important}
 .mast .back{color:#445366!important}
 
 @media(max-width:900px){
   .masthead__inner{align-items:center!important;gap:14px!important}
-  .masthead .brand,.mast .brand{width:250px;height:46px;flex-basis:250px}
+  .masthead .brand img,.mast .brand img{width:220px;max-width:42vw;max-height:58px}
 }
 @media(max-width:620px){
   .masthead__inner{padding:10px 20px!important;align-items:flex-start!important}
-  .masthead .brand,.mast .brand{width:220px;height:42px;flex-basis:220px}
+  .masthead .brand img,.mast .brand img{width:185px;max-width:62vw;max-height:52px}
   .masthead__right{gap:14px!important}
 }
