@@ -23,10 +23,10 @@ function materializeHtml(name) {
   fs.writeFileSync(target, zlib.gunzipSync(compressed));
 }
 
-function materializeBinary(name) {
-  const packed = path.join(sourceDir, `${name}.b64`);
-  const target = path.join(dist, name);
-  if (!fs.existsSync(packed)) return;
+function materializeBinary(targetName) {
+  const packed = path.join(sourceDir, `${path.basename(targetName)}.b64`);
+  const target = path.join(dist, targetName);
+  if (!fs.existsSync(packed)) throw new Error(`Asset-fonte ausente: ${path.basename(targetName)}`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64'));
 }
