@@ -4,6 +4,7 @@ const zlib = require('zlib');
 
 const root = __dirname;
 const dist = path.join(root, 'dist');
+const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
 
 fs.rmSync(dist, { recursive: true, force: true });
@@ -11,7 +12,7 @@ fs.mkdirSync(dist, { recursive: true });
 
 function materializeHtml(name) {
   const direct = path.join(root, name);
-  const packed = path.join(root, 'source', `${name}.gz.b64`);
+  const packed = path.join(sourceDir, `${name}.gz.b64`);
   const target = path.join(dist, name);
   if (fs.existsSync(direct)) {
     fs.copyFileSync(direct, target);
@@ -20,6 +21,14 @@ function materializeHtml(name) {
   if (!fs.existsSync(packed)) throw new Error(`Arquivo-fonte ausente: ${name}`);
   const compressed = Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64');
   fs.writeFileSync(target, zlib.gunzipSync(compressed));
+}
+
+function materializeBinary(name) {
+  const packed = path.join(sourceDir, `${name}.b64`);
+  const target = path.join(dist, name);
+  if (!fs.existsSync(packed)) return;
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64'));
 }
 
 materializeHtml('index.html');
@@ -34,6 +43,9 @@ for (const dir of ['assets', 'admin']) {
   const src = path.join(root, dir);
   if (fs.existsSync(src)) fs.cpSync(src, path.join(dist, dir), { recursive: true });
 }
+
+materializeBinary('assets/gleice-zappala.webp');
+materializeBinary('assets/luiza-zappala.webp');
 
 let posts = [];
 if (fs.existsSync(contentDir)) {
