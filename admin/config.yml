@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: luizaozappala/zappala-advocacia
+  branch: main
+  auth_methods: [token]
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: informativos
+    label: Informativos
+    label_singular: Publicação
+    folder: content/informativos
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{category}} — {{title}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - label: Tipo
+        name: category
+        widget: select
+        options: [Notícia, Artigo, Guia]
+      - { label: Data, name: date, widget: datetime }
+      - { label: Resumo, name: excerpt, widget: text, hint: "Duas ou três linhas para a página de Informativos e redes sociais." }
+      - { label: Imagem de capa, name: cover, widget: image }
+      - { label: Texto alternativo da imagem, name: cover_alt, widget: string, hint: "Descrição objetiva da imagem para acessibilidade." }
+      - label: Autoria
+        name: author
+        widget: select
+        options: [Gleice Zappalá, Luíza Zappalá, Zappalá Advocacia & Consultoria]
+      - { label: Texto da publicação, name: body, widget: richtext }
+      - { label: Publicado, name: published, widget: boolean, default: true }
+      - { label: Destaque, name: featured, widget: boolean, default: false, required: false }
+      - { label: Link do Instagram, name: instagram_url, widget: string, required: false }
+      - { label: Legenda para Instagram, name: instagram_caption, widget: text, required: false, hint: "Campo interno: não aparece automaticamente no site." }
