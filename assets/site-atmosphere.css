@@ -1,0 +1,126 @@
+/* Atmosfera global — Zappalá Advocacia & Consultoria
+   Profundidade editorial por vinhetas e halos em ardósia.
+   A seção Equipe mantém seu tratamento próprio em team-section.css. */
+
+:root{
+  --atmo-cream:#EDE8DD;
+  --atmo-ink:#192028;
+  --atmo-slate:#6C7D92;
+  --atmo-slate-light:#ACB8C7;
+}
+
+/* Superfícies claras: papel, áreas editoriais e faixas claras. */
+.band:not(.team-teaser),
+.method,
+.audience,
+.content,
+.cta-band,
+#contato{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background-image:
+    radial-gradient(circle at 10% 16%,rgba(108,125,146,.105) 0%,rgba(108,125,146,.048) 17%,rgba(108,125,146,0) 37%),
+    radial-gradient(circle at 90% 82%,rgba(172,184,199,.125) 0%,rgba(172,184,199,.052) 18%,rgba(172,184,199,0) 39%),
+    radial-gradient(ellipse at center,rgba(25,32,40,0) 42%,rgba(25,32,40,.025) 72%,rgba(25,32,40,.075) 100%);
+  background-repeat:no-repeat;
+  background-size:118% 118%,122% 122%,100% 100%;
+  background-position:-3% -2%,103% 102%,center;
+  animation:atmoLightDrift 30s ease-in-out infinite alternate;
+}
+
+/* Alternância editorial: muda a incidência de luz de uma seção para outra. */
+section:nth-of-type(even):not(.hero):not(.flow):not(.team-teaser){
+  background-position:103% -2%,-3% 102%,center;
+}
+
+/* Superfícies escuras: hero e blocos institucionais escuros. */
+.hero,
+.flow{
+  background-image:
+    radial-gradient(circle at 82% 18%,rgba(172,184,199,.16) 0%,rgba(108,125,146,.075) 20%,rgba(108,125,146,0) 42%),
+    radial-gradient(circle at 12% 84%,rgba(108,125,146,.105) 0%,rgba(68,83,102,.045) 21%,rgba(68,83,102,0) 43%),
+    radial-gradient(ellipse at center,rgba(5,10,16,0) 34%,rgba(5,10,16,.10) 68%,rgba(5,10,16,.26) 100%);
+  background-repeat:no-repeat;
+  background-size:116% 116%,122% 122%,100% 100%;
+  background-position:102% -4%,-4% 104%,center;
+  animation:atmoDarkDrift 34s ease-in-out infinite alternate;
+}
+
+/* Rodapés também recebem profundidade, com intensidade contida. */
+footer{
+  position:relative;
+  overflow:hidden;
+  background-image:
+    radial-gradient(circle at 82% 12%,rgba(172,184,199,.085) 0%,rgba(108,125,146,.035) 21%,rgba(108,125,146,0) 43%),
+    radial-gradient(ellipse at center,rgba(5,10,16,0) 38%,rgba(5,10,16,.15) 100%);
+  background-repeat:no-repeat;
+  background-size:120% 120%,100% 100%;
+}
+
+/* Página individual de publicação: o conteúdo é estreito, então a atmosfera
+   fica no corpo inteiro para não criar uma caixa visual ao redor do artigo. */
+body:has(> .mast):has(> .article){
+  background-image:
+    radial-gradient(circle at 8% 18%,rgba(108,125,146,.09) 0%,rgba(108,125,146,.035) 18%,rgba(108,125,146,0) 38%),
+    radial-gradient(circle at 92% 72%,rgba(172,184,199,.11) 0%,rgba(172,184,199,.045) 18%,rgba(172,184,199,0) 39%),
+    radial-gradient(ellipse at center,rgba(25,32,40,0) 44%,rgba(25,32,40,.065) 100%);
+  background-repeat:no-repeat;
+  background-size:122% 122%,122% 122%,100% 100%;
+  background-position:-4% -3%,104% 103%,center;
+  animation:atmoLightDrift 32s ease-in-out infinite alternate;
+}
+
+/* Página 404: vinheta escura com halo frio, seguindo a mesma identidade. */
+body:has(> .box){
+  background-image:
+    radial-gradient(circle at 78% 18%,rgba(172,184,199,.17) 0%,rgba(108,125,146,.07) 22%,rgba(108,125,146,0) 44%),
+    radial-gradient(circle at 12% 86%,rgba(108,125,146,.10) 0%,rgba(68,83,102,.04) 22%,rgba(68,83,102,0) 44%),
+    radial-gradient(ellipse at center,rgba(5,10,16,0) 32%,rgba(5,10,16,.30) 100%);
+  background-repeat:no-repeat;
+  background-size:118% 118%,122% 122%,100% 100%;
+  animation:atmoDarkDrift 34s ease-in-out infinite alternate;
+}
+
+/* Garante que o conteúdo permaneça acima das camadas atmosféricas. */
+.band:not(.team-teaser) > .wrap,
+.method > .wrap,
+.audience > .wrap,
+.content > .wrap,
+.cta-band > .wrap,
+#contato > .wrap,
+.hero > .wrap,
+.flow > .wrap,
+footer > .wrap{
+  position:relative;
+  z-index:1;
+}
+
+@keyframes atmoLightDrift{
+  0%{background-position:-3% -2%,103% 102%,center}
+  50%{background-position:1% 1%,99% 99%,center}
+  100%{background-position:4% -1%,96% 103%,center}
+}
+
+@keyframes atmoDarkDrift{
+  0%{background-position:102% -4%,-4% 104%,center}
+  50%{background-position:99% 0%,0% 100%,center}
+  100%{background-position:95% 3%,4% 97%,center}
+}
+
+@media (max-width:720px){
+  .band:not(.team-teaser),.method,.audience,.content,.cta-band,#contato{
+    background-size:145% 145%,150% 150%,100% 100%;
+  }
+  .hero,.flow{
+    background-size:145% 145%,150% 150%,100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .band:not(.team-teaser),.method,.audience,.content,.cta-band,#contato,
+  .hero,.flow,
+  body:has(> .mast):has(> .article),body:has(> .box){
+    animation:none!important;
+  }
+}
