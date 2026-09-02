@@ -17,14 +17,14 @@ html.motion-enabled .reveal,html.motion-enabled .motion-item{opacity:0;transform
 @media (max-width:860px){.hero .ambient-orb--1{width:520px;right:-230px;top:-100px;opacity:.7}.hero .ambient-orb--2{width:310px;right:-80px;bottom:-170px;opacity:.32}.hero .ambient-orb--3{display:none}.flow .ambient-orb--1{width:380px;left:-230px}.flow .ambient-orb--2{width:300px;right:-190px}.svc:hover,.flow__step:hover,.team-mini:hover,.profile-card:hover,.pub:hover{transform:none}.svc:hover{padding-left:0}.flow__step:hover{padding-left:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}html.motion-enabled .hero .eyebrow,html.motion-enabled .hero h1,html.motion-enabled .hero .hero__sub,html.motion-enabled .hero .hero__actions,html.motion-enabled .reveal,html.motion-enabled .motion-item{opacity:1!important;transform:none!important}.ambient-field{transform:none!important}}
 
-/* Equipe — ardósia médio da identidade */
-.team-teaser{background:#788B9F!important}
-.team-teaser::before{background:radial-gradient(circle,rgba(172,184,199,.25) 0%,rgba(172,184,199,.11) 36%,rgba(120,139,159,0) 72%)}
-.team-teaser .rail::before{background:rgba(20,26,33,.24)!important}
-.team-teaser .rail__label{color:#243240!important}
-.team-teaser h2,.team-teaser h3{color:#141A21!important}
-.team-teaser .lede,.team-teaser .team-mini p{color:#1D2833!important}
-.team-teaser .team-mini{border-top-color:rgba(20,26,33,.24)!important}
-.team-teaser .team-mini__role,.team-teaser .text-link{color:#243240!important}
-.team-teaser .text-link{border-bottom-color:rgba(20,26,33,.28)!important}
-.team-teaser .text-link:hover{border-bottom-color:#141A21!important}
+/* Equipe — ardósia médio com tipografia clara */
+.team-teaser{background:#788B9F!important;color:#EDE8DD!important}
+.team-teaser::before{background:radial-gradient(circle,rgba(214,221,229,.24) 0%,rgba(172,184,199,.13) 36%,rgba(120,139,159,0) 72%)}
+.team-teaser .rail::before{background:rgba(237,232,221,.26)!important}
+.team-teaser .rail__label{color:#D5DEE8!important}
+.team-teaser h2,.team-teaser h3{color:#F1ECE0!important}
+.team-teaser .lede,.team-teaser .team-mini p{color:rgba(241,236,224,.86)!important}
+.team-teaser .team-mini{border-top-color:rgba(237,232,221,.28)!important}
+.team-teaser .team-mini__role{color:#D5DEE8!important}
+.team-teaser .text-link{color:#F1ECE0!important;border-bottom-color:rgba(241,236,224,.40)!important}
+.team-teaser .text-link:hover{color:#FFFFFF!important;border-bottom-color:#F1ECE0!important}
