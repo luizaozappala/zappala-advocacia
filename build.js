@@ -44,6 +44,14 @@ for (const dir of ['assets', 'admin']) {
   if (fs.existsSync(src)) fs.cpSync(src, path.join(dist, dir), { recursive: true });
 }
 
+const indexPath = path.join(dist, 'index.html');
+if (fs.existsSync(indexPath)) {
+  let html = fs.readFileSync(indexPath, 'utf8');
+  const teamCss = '<link rel="stylesheet" href="assets/team-section.css">';
+  if (!html.includes('assets/team-section.css')) html = html.replace('</head>', `${teamCss}\n</head>`);
+  fs.writeFileSync(indexPath, html);
+}
+
 materializeBinary('assets/gleice-zappala.webp');
 materializeBinary('assets/luiza-zappala.webp');
 
