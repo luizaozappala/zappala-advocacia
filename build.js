@@ -40,6 +40,15 @@ function injectStylesheet(htmlName, href) {
   fs.writeFileSync(htmlPath, html);
 }
 
+function injectBrandLogo(htmlName) {
+  const htmlPath = path.join(dist, htmlName);
+  if (!fs.existsSync(htmlPath)) return;
+  let html = fs.readFileSync(htmlPath, 'utf8');
+  const logo = '<img src="assets/logo-zappala-header.png" alt="Zappalá Advocacia &amp; Consultoria" width="260" height="77">';
+  html = html.replace(/(<a\b[^>]*class="[^"]*\bbrand\b[^"]*"[^>]*>)[\s\S]*?(<\/a>)/g, `$1${logo}$2`);
+  fs.writeFileSync(htmlPath, html);
+}
+
 materializeHtml('index.html');
 materializeHtml('equipe.html');
 
@@ -58,6 +67,7 @@ for (const dir of ['assets', 'admin']) {
 for (const name of ['index.html', 'equipe.html', 'informativos.html', 'publicacao.html', '404.html']) {
   injectStylesheet(name, 'assets/site-atmosphere.css');
   injectStylesheet(name, 'assets/brand-header.css');
+  injectBrandLogo(name);
 }
 
 /* A home mantém um tratamento mais elaborado para o bloco Equipe. */
@@ -93,6 +103,7 @@ const urls = [
   ...posts.map((post) => `${baseUrl}/publicacao.html?slug=${encodeURIComponent(post.slug)}`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${url.replace(/&/g, '&amp;')}</loc></url>`).join('\n')}\n</urlset>\n`;
+fs.writeFileSync(path.join(dataDir, 'informativos.json'), JSON.stringify(posts, null, 2));
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
 
 console.log(`Build concluído: ${posts.length} publicação(ões) em Informativos.`);
