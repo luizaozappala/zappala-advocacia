@@ -57,6 +57,7 @@ for (const dir of ['assets', 'admin']) {
    O painel /admin fica de fora para preservar a interface do CMS. */
 for (const name of ['index.html', 'equipe.html', 'informativos.html', 'publicacao.html', '404.html']) {
   injectStylesheet(name, 'assets/site-atmosphere.css');
+  injectStylesheet(name, 'assets/brand-header.css');
 }
 
 /* A home mantém um tratamento mais elaborado para o bloco Equipe. */

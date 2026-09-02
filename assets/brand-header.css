@@ -1,0 +1,59 @@
+/* Cabeçalho institucional — nova identidade Zappalá */
+.masthead{
+  background:rgba(241,236,224,.96)!important;
+  color:#192028!important;
+  border-bottom:1px solid #C6BEAF!important;
+  backdrop-filter:blur(10px);
+}
+.masthead__inner{padding:13px 28px!important;min-height:76px}
+.masthead .nav a,.masthead .masthead__cta{
+  color:#2C333C!important;
+}
+.masthead .nav a:hover,.masthead .nav a.is-current,.masthead .masthead__cta:hover{
+  color:#192028!important;
+  border-color:#445366!important;
+}
+.masthead .masthead__cta{
+  border-color:#C6BEAF!important;
+  background:transparent!important;
+}
+.masthead .brand{
+  display:block!important;
+  width:300px;
+  height:54px;
+  flex:0 0 300px;
+  font-size:0!important;
+  line-height:0;
+  background:url('logo-zappala-header.webp') left center / contain no-repeat;
+}
+.masthead .brand em{display:none!important}
+
+/* Página individual de publicação usa .mast em vez de .masthead. */
+.mast{
+  background:rgba(241,236,224,.96)!important;
+  color:#192028!important;
+  border-bottom:1px solid #C6BEAF;
+  backdrop-filter:blur(10px);
+  padding:11px 0!important;
+}
+.mast .brand{
+  display:block!important;
+  width:300px;
+  height:54px;
+  flex:0 0 300px;
+  font-size:0!important;
+  line-height:0;
+  background:url('logo-zappala-header.webp') left center / contain no-repeat;
+}
+.mast .brand em{display:none!important}
+.mast .back{color:#445366!important}
+
+@media(max-width:900px){
+  .masthead__inner{align-items:center!important;gap:14px!important}
+  .masthead .brand,.mast .brand{width:250px;height:46px;flex-basis:250px}
+}
+@media(max-width:620px){
+  .masthead__inner{padding:10px 20px!important;align-items:flex-start!important}
+  .masthead .brand,.mast .brand{width:220px;height:42px;flex-basis:220px}
+  .masthead__right{gap:14px!important}
+}
