@@ -96,6 +96,85 @@ footer > .wrap{
   z-index:1;
 }
 
+/* Elevação suave — aplicada aos objetos, nunca à tipografia.
+   A sombra no repouso é quase imperceptível; o hover acrescenta um halo frio. */
+.team-mini__photo,
+.profile-card__photo,
+.pub-card__image,
+.cover{
+  box-shadow:
+    0 15px 36px rgba(25,32,40,.075),
+    0 0 0 1px rgba(108,125,146,.055),
+    0 0 30px rgba(172,184,199,.035);
+  transition:box-shadow .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.team-mini:hover .team-mini__photo,
+.profile-card:hover .profile-card__photo,
+.pub-card:hover .pub-card__image{
+  box-shadow:
+    0 20px 48px rgba(25,32,40,.105),
+    0 0 0 1px rgba(108,125,146,.085),
+    0 0 38px rgba(172,184,199,.07);
+}
+
+/* Na faixa ardósia, o halo ganha um pouco mais de luz para separar os retratos
+   do fundo sem criar uma borda artificial. */
+.team-teaser .team-mini__photo{
+  box-shadow:
+    0 18px 44px rgba(20,26,33,.18),
+    0 0 0 1px rgba(241,236,224,.10),
+    0 0 34px rgba(225,232,238,.105);
+}
+.team-teaser .team-mini:hover .team-mini__photo{
+  box-shadow:
+    0 22px 54px rgba(20,26,33,.22),
+    0 0 0 1px rgba(241,236,224,.15),
+    0 0 44px rgba(225,232,238,.15);
+}
+
+/* Cards editoriais permanecem quase planos; a profundidade surge só ao interagir. */
+.practice-group,
+.profile-card,
+.pub-card{
+  transition:box-shadow .42s ease,transform .42s cubic-bezier(.22,.61,.36,1),background-color .35s ease;
+}
+.practice-group:hover,
+.profile-card:hover,
+.pub-card:hover{
+  position:relative;
+  z-index:2;
+  box-shadow:
+    0 18px 46px rgba(25,32,40,.065),
+    0 0 34px rgba(108,125,146,.035);
+}
+
+/* Botões: pequena sombra de contato e halo frio no hover. */
+.btn,
+.masthead__cta{
+  box-shadow:
+    0 8px 22px rgba(25,32,40,.07),
+    0 0 22px rgba(172,184,199,.025);
+}
+.btn:hover,
+.masthead__cta:hover{
+  box-shadow:
+    0 12px 30px rgba(25,32,40,.11),
+    0 0 30px rgba(172,184,199,.075)!important;
+}
+.hero .btn,
+.flow .btn{
+  box-shadow:
+    0 12px 30px rgba(5,10,16,.18),
+    0 0 28px rgba(172,184,199,.055);
+}
+.hero .btn:hover,
+.flow .btn:hover{
+  box-shadow:
+    0 15px 38px rgba(5,10,16,.22),
+    0 0 36px rgba(172,184,199,.095)!important;
+}
+
 @keyframes atmoLightDrift{
   0%{background-position:-3% -2%,103% 102%,center}
   50%{background-position:1% 1%,99% 99%,center}
@@ -114,6 +193,10 @@ footer > .wrap{
   }
   .hero,.flow{
     background-size:145% 145%,150% 150%,100% 100%;
+  }
+  /* Em telas pequenas reduzimos a elevação para manter o desenho leve. */
+  .team-mini__photo,.profile-card__photo,.pub-card__image,.cover{
+    box-shadow:0 11px 28px rgba(25,32,40,.065),0 0 22px rgba(172,184,199,.03);
   }
 }
 
