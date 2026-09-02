@@ -24,7 +24,7 @@
   flex:0 0 300px;
   font-size:0!important;
   line-height:0;
-  background:url('logo-zappala-header.webp') left center / contain no-repeat;
+  background:url('logo-zappala-header.png') left center / contain no-repeat;
 }
 .masthead .brand em{display:none!important}
 
@@ -43,7 +43,7 @@
   flex:0 0 300px;
   font-size:0!important;
   line-height:0;
-  background:url('logo-zappala-header.webp') left center / contain no-repeat;
+  background:url('logo-zappala-header.png') left center / contain no-repeat;
 }
 .mast .brand em{display:none!important}
 .mast .back{color:#445366!important}
