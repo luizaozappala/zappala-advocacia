@@ -35,8 +35,12 @@ body{
   font-family:var(--texto)!important;font-size:18px!important;line-height:1.6!important;font-weight:400!important;
 }
 img{max-width:100%;height:auto}
-a{color:inherit}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 :focus-visible{outline:3px solid var(--pedra);outline-offset:3px}
+.hero :focus-visible,.dark :focus-visible,footer :focus-visible,.masthead :focus-visible{outline-color:var(--gelo)}
+::selection{background:var(--pedra);color:var(--branco)}
+html{scrollbar-color:var(--apoio) var(--nevoa);accent-color:var(--pedra);caret-color:var(--pedra)}
+a[href^="https://wa.me"],a[href^="tel:"]{font-variant-numeric:tabular-nums}
 
 h1,h2,h3,h4,.foot-title{
   font-family:var(--titulo)!important;font-weight:600!important;font-style:normal!important;
@@ -155,78 +159,6 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
 .section-head{max-width:720px;margin-bottom:48px}
 .section-head p,.lede{font-size:19px!important;line-height:1.6!important;color:var(--apoio)!important;margin:18px 0 0!important;font-family:var(--texto)!important}
 @media (max-width:760px){.band,.section{padding:64px 0!important}}
-
-/* Áreas */
-.areas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--linha);border-left:1px solid var(--linha)}
-.area{padding:32px 28px 30px;border-right:1px solid var(--linha);border-bottom:1px solid var(--linha);display:flex;flex-direction:column;gap:12px;background:var(--branco)}
-.area__pergunta{font-family:var(--titulo);font-weight:500;font-size:19px;line-height:1.35;color:var(--apoio);margin:0}
-.area ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
-.area li{font-size:17px;line-height:1.45;padding-left:16px;position:relative}
-.area li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:2px;background:var(--pedra);transform:skewX(-40deg)}
-.area__links{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;gap:4px 18px}
-.text-link{
-  font-family:var(--texto)!important;font-size:16px!important;letter-spacing:0!important;text-transform:none!important;
-  color:var(--pedra)!important;text-decoration:underline;text-underline-offset:3px;border:0!important;
-}
-.text-link:hover{color:var(--grafite)!important}
-@media (max-width:980px){.areas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.areas-grid{grid-template-columns:1fr}.area{padding:26px 22px}}
-
-.empresas{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:28px;padding:32px 28px;background:var(--nevoa)}
-.empresas h3{font-size:22px!important}
-.empresas p{margin:8px 0 0;color:var(--apoio)}
-.empresas ul{margin:0;padding:0;list-style:none;columns:2;column-gap:32px}
-.empresas li{font-size:17px;padding:4px 0}
-@media (max-width:760px){.empresas{grid-template-columns:1fr}.empresas ul{columns:1}}
-
-/* Compromisso de retorno */
-.compromisso{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:start}
-.compromisso__destaque{font-family:var(--titulo);font-weight:500;font-size:clamp(22px,2.2vw,27px);line-height:1.35;letter-spacing:-.01em;margin:24px 0 0;max-width:520px}
-.compromisso__lista{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
-.compromisso__lista li{padding:20px 0;border-top:1px solid #C9D4D9}
-.compromisso__lista li:last-child{border-bottom:1px solid #C9D4D9}
-.compromisso__lista strong{display:block;font-family:var(--titulo);font-weight:600;font-size:20px;margin-bottom:4px}
-.compromisso__lista span{color:var(--apoio)}
-@media (max-width:900px){.compromisso{grid-template-columns:1fr;gap:36px}}
-
-/* Etapas */
-.etapas{margin:0;padding:0;list-style:none;counter-reset:etapa;max-width:860px}
-.etapas li{counter-increment:etapa;display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid rgba(174,190,198,.28)}
-.etapas li:last-child{border-bottom:1px solid rgba(174,190,198,.28)}
-.etapas li::before{content:counter(etapa);font-family:var(--titulo);font-weight:600;font-size:30px;line-height:1;color:var(--gelo)}
-.etapas h3{font-size:22px!important;color:var(--branco)}
-.etapas p{margin:8px 0 0;color:var(--gelo);max-width:640px}
-.dark .section-head p{color:var(--gelo)!important}
-.dark h2{color:var(--branco)}
-
-/* Equipe (home) */
-.equipe-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.pessoa{display:grid;grid-template-columns:140px minmax(0,1fr);gap:22px;align-items:start;background:var(--branco);padding:22px}
-.pessoa img{width:140px;height:175px;object-fit:cover;object-position:top;display:block}
-.pessoa h3{font-size:24px!important}
-.pessoa__cargo{color:var(--apoio);margin:4px 0 10px;font-size:16px}
-.pessoa p{margin:0}
-.equipe-mais{margin-top:28px}
-@media (max-width:860px){.equipe-grid{grid-template-columns:1fr}}
-@media (max-width:480px){.pessoa{grid-template-columns:96px minmax(0,1fr);gap:16px;padding:16px}.pessoa img{width:96px;height:120px}}
-
-/* Contato */
-.contato{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
-.aviso{border-left:3px solid var(--pedra);background:var(--nevoa);padding:18px 22px;font-size:17px;line-height:1.55;margin:0}
-.campo{display:flex;flex-direction:column;gap:8px;margin:28px 0 0}
-.campo label{font-weight:700;font-size:17px}
-.campo select{
-  font:inherit;font-size:18px;color:var(--grafite);background:var(--branco);border:1.5px solid var(--apoio);border-radius:4px;
-  padding:13px 44px 13px 14px;appearance:none;-webkit-appearance:none;
-  background-image:linear-gradient(45deg,transparent 50%,var(--grafite) 50%),linear-gradient(135deg,var(--grafite) 50%,transparent 50%);
-  background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat;
-}
-.campo .dica{font-size:16px;color:var(--apoio)}
-.contato__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:24px}
-.status{font-size:16px;color:var(--apoio)}
-.contato__outros{margin:28px 0 0;font-size:17px;color:var(--apoio)}
-.contato__outros a{color:var(--grafite)}
-@media (max-width:900px){.contato{grid-template-columns:1fr;gap:28px}}
 
 /* ---------- Rodapé ---------- */
 footer{
