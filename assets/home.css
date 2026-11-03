@@ -108,7 +108,7 @@
 .equipe__mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
 .equipe__foto{margin:0;position:relative;overflow:clip}
 .equipe__mosaico > .equipe__foto{grid-column:1 / span 7}
-.equipe__foto img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 22%;filter:grayscale(.55) contrast(1.04)}
+.equipe__foto img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 22%;filter:grayscale(.3) contrast(1.03)}
 .equipe__foto figcaption{padding:16px 0 0;font-size:var(--peq);line-height:1.5;color:var(--apoio);max-width:46ch}
 .equipe__foto strong{display:block;font-family:var(--titulo);font-weight:600;font-size:var(--lead);margin-bottom:4px;color:var(--grafite)}
 .equipe__lado{grid-column:8 / span 5;display:flex;flex-direction:column;gap:28px}
