@@ -36,9 +36,10 @@ function header(page) {
     .map(([href, label, owner]) => `<a href="${href}"${owner === page ? ' class="is-current" aria-current="page"' : ''}>${label}</a>`)
     .join('');
   return `<header class="masthead"><div class="masthead__inner">` +
-    `<a class="brand" href="/"><img src="/assets/logo-zappala.svg" alt="Zappalá advocacia &amp; consultoria" width="190" height="58"></a>` +
+    `<a class="brand" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="236" height="73"></a>` +
     `<div class="masthead__right"><nav class="nav" aria-label="Navegação principal">${links}</nav>` +
-    `<a class="masthead__cta" href="/#contato">Falar com o escritório</a></div></div></header>`;
+    `<a class="masthead__cta" href="/#contato">Falar com o escritório</a></div></div></header>` +
+    `<script>(function(){var h=document.querySelector('.masthead');function f(){h.classList.toggle('is-solid',window.scrollY>24)}f();window.addEventListener('scroll',f,{passive:true})})();</script>`;
 }
 
 const footer = `<footer><div class="wrap">

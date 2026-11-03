@@ -61,9 +61,11 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
 
 /* ---------- Cabeçalho ---------- */
 .masthead{
-  position:sticky;top:0;z-index:50;background:rgba(251,252,252,.97)!important;
-  border-bottom:1px solid var(--linha)!important;color:var(--grafite)!important;backdrop-filter:none!important;
+  position:fixed;top:0;left:0;right:0;z-index:50;background:transparent!important;
+  border-bottom:1px solid transparent!important;color:var(--branco)!important;backdrop-filter:none!important;
+  transition:background-color .2s ease,border-color .2s ease;
 }
+.masthead.is-solid{background:var(--grafite)!important;border-bottom-color:rgba(174,190,198,.18)!important}
 .masthead__inner{
   max-width:var(--largura);margin:0 auto;padding:14px 28px!important;min-height:76px;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -75,15 +77,18 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
 .nav{display:flex;gap:24px}
 .nav a{
   font-family:var(--texto)!important;font-size:16px!important;letter-spacing:0!important;text-transform:none!important;
-  color:var(--grafite)!important;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent!important;
+  color:var(--nevoa)!important;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent!important;
 }
-.nav a:hover,.nav a.is-current{border-bottom-color:var(--pedra)!important}
+.nav a:hover{color:var(--branco)!important}
+.nav a:hover,.nav a.is-current{border-bottom-color:var(--gelo)!important}
+.nav a.is-current{color:var(--branco)!important}
 .masthead__cta{
   font-family:var(--texto)!important;font-size:16px!important;font-weight:700!important;letter-spacing:0!important;
   text-transform:none!important;text-decoration:none;white-space:nowrap;
-  background:var(--grafite)!important;color:var(--branco)!important;border:0!important;border-radius:4px;padding:11px 18px!important;
+  background:var(--branco)!important;color:var(--grafite)!important;border:0!important;border-radius:4px;padding:11px 18px!important;
 }
-.masthead__cta:hover{background:var(--apoio)!important}
+.masthead__cta:hover{background:var(--nevoa)!important}
+.masthead :focus-visible{outline-color:var(--gelo)}
 .menu-toggle{display:none}
 @media (max-width:960px){
   .masthead__inner{min-height:0;padding:10px 20px 0!important;flex-wrap:wrap;gap:10px 16px}
@@ -124,7 +129,7 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
   filter:drop-shadow(0 30px 50px rgba(5,10,14,.35));opacity:.7;border-radius:0!important;
 }
 .hero .wrap,.dark .wrap{position:relative;z-index:1}
-.hero__inner{padding-top:96px!important;padding-bottom:100px!important;max-width:var(--largura)}
+.hero__inner{padding-top:192px!important;padding-bottom:100px!important;max-width:var(--largura)}
 .hero h1{color:var(--branco)!important;max-width:640px}
 .hero .eyebrow{color:var(--gelo)!important;margin:0 0 20px}
 .hero__sub{
@@ -136,11 +141,12 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
 .hero .btn:hover{background:var(--nevoa)!important}
 .hero .btn--ghost{background:transparent!important;color:var(--branco)!important;border-color:var(--gelo)!important}
 .hero .btn--ghost:hover{background:rgba(251,252,252,.08)!important}
-.hero--compact .hero__inner{padding-top:72px!important;padding-bottom:80px!important}
-.hero--compact::after{width:320px;height:320px;right:2%}
+.hero--compact .hero__inner{padding-top:168px!important;padding-bottom:80px!important}
+.hero--compact::after{width:320px;height:320px;right:2%;top:58%}
+@media (max-width:760px){.hero--compact .hero__inner{padding-top:140px!important}}
 @media (max-width:760px){
   .hero::after{width:300px;height:300px;right:-120px;top:auto;bottom:-90px;transform:none;opacity:.3}
-  .hero__inner{padding-top:64px!important;padding-bottom:72px!important}
+  .hero__inner{padding-top:150px!important;padding-bottom:72px!important}
 }
 
 /* ---------- Seções ---------- */
@@ -284,3 +290,4 @@ footer p{font-size:16px!important;line-height:1.6!important;margin:0}
 /* sem efeitos de flutuação da versão anterior */
 .ambient-field,.ambient-orb{display:none!important}
 .reveal,.js-anim .reveal{opacity:1!important;transform:none!important}
+section[id],[id="areas"]{scroll-margin-top:110px}
