@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node build.js && node scripts/check-ux.js",
-    "test:ux": "node scripts/check-ux.js"
+    "build": "node build.js && node scripts/check-ux.js && node scripts/check-seo.js",
+    "test:ux": "node scripts/check-ux.js",
+    "test:seo": "node scripts/check-seo.js"
   },
   "engines": {
     "node": ">=18"
