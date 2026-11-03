@@ -133,6 +133,7 @@ a.contato__linha:hover > .wrap{transform:translateX(6px)}
 .contato__linha--acao .btn{border-radius:var(--raio)!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none;font-family:var(--texto)!important;letter-spacing:0}
 .home .contato__endereco{margin-top:28px!important;margin-bottom:0!important;font:400 var(--corpo)/1.6 var(--texto);color:var(--apoio)}
 .home .contato__endereco span{display:block;color:var(--grafite);font-weight:700}
+.home .contato__endereco a{display:inline-block;margin-top:6px;color:var(--pedra);font:700 15px/1.5 var(--texto);text-underline-offset:.2em}
 .home .contato__nota{margin-top:24px!important;font-size:var(--peq);color:var(--apoio);max-width:none}
 .home .contato__nota{max-width:calc(52ch + 2 * var(--margem))}
 
