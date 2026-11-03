@@ -45,7 +45,7 @@ const footer = `<footer><div class="wrap">
 <div class="foot-grid">
 <div><a class="foot-logo" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="200" height="62"></a>
 <p class="foot-assinatura">Uma advocacia que começa pela atenção aos detalhes.</p></div>
-<div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531989553592">(31) 98955-3592</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
+<div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
 <p style="margin-top:14px">Presencial em Belo Horizonte/MG, com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
 <div><h4>Navegação</h4><p><a href="/#areas">Em que ajudamos</a><br><a href="/#retorno">Acompanhamento do caso</a><br><a href="/#atendimento">Como funciona</a><br><a href="/equipe.html">Equipe</a><br><a href="/informativos.html">Informativos</a></p></div>
 </div>
@@ -58,7 +58,7 @@ const legalService = {
   name: 'Zappalá Advocacia & Consultoria',
   url: `${baseUrl}/`,
   logo: `${baseUrl}/assets/logo-zappala.svg`,
-  telephone: '+55-31-98955-3592',
+  telephone: '+55-31-99237-7158',
   email: 'luiza.zappala.adv@gmail.com',
   sameAs: ['https://www.instagram.com/zappala.adv/'],
   areaServed: [{ '@type': 'City', name: 'Belo Horizonte' }, { '@type': 'Country', name: 'Brasil' }],
