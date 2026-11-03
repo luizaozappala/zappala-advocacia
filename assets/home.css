@@ -247,11 +247,7 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 }
 .situacoes .wrap{position:relative;z-index:1}
 .faixa{position:relative;overflow:hidden}
-.faixa::after{
-  content:"";position:absolute;pointer-events:none;z-index:0;
-  width:min(52vw,720px);aspect-ratio:1;left:38%;bottom:-22%;
-  background:url("/assets/simbolo-tom-pedra.svg") no-repeat center/contain
-}
+.faixa{background-image:url("/assets/ladrilho-pedra.svg");background-size:180px 180px;background-position:center top}
 .faixa__grade{position:relative;z-index:1}
 .home footer.fim{overflow:hidden}
 .home footer.fim::after{
@@ -264,6 +260,6 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 }
 @media (max-width:720px){
   .conversa::after{width:260vw;left:50%;top:44%}
-  .faixa::after{width:90vw;left:auto;right:-36vw;bottom:-18%}
+  .faixa{background-size:112px 112px}
   .home footer.fim::after{width:80vw;right:-30vw;bottom:-10%}
 }
