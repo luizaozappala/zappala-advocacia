@@ -3,9 +3,9 @@
    Separação por tom e espaço, sem fios. A única luz em degradê é a do topo, pedida pela marca. */
 
 .home{
-  --xl:clamp(46px,7.3vw,128px);
-  --l:clamp(36px,4.6vw,72px);
-  --m:clamp(23px,2.45vw,36px);
+  --xl:clamp(36px,4.4vw,68px);
+  --l:clamp(28px,2.9vw,44px);
+  --m:clamp(20px,1.75vw,26px);
   --lead:21px;
   --corpo:17px;
   --peq:15px;
@@ -21,23 +21,23 @@
 
 /* ---------- Topo: duas linhas, de margem a margem ---------- */
 .topo{
-  position:relative;overflow:hidden;color:var(--branco);min-height:100svh;display:flex;
+  position:relative;overflow:hidden;color:var(--branco);display:flex;
   background:radial-gradient(110% 120% at 0% 0%,#3A4E57 0%,#2C3C44 26%,#24323A 48%,var(--grafite) 72%) var(--grafite)
 }
 .topo::before{content:"";position:absolute;inset:0;background-image:var(--papel);opacity:.09;mix-blend-mode:overlay;pointer-events:none}
 .topo__grade{position:relative;z-index:1;width:100%;display:grid;grid-template-rows:auto 1fr}
-.home .topo__grade{padding-top:calc(76px + 12svh)!important;padding-bottom:36px!important}
-.home .topo h1{font-size:var(--xl)!important;font-weight:600!important;letter-spacing:-.04em!important;line-height:.98!important;max-width:none;color:var(--branco);margin:0}
+.home .topo__grade{padding-top:calc(76px + 128px)!important;padding-bottom:112px!important}
+.home .topo h1{font-size:var(--xl)!important;font-weight:600!important;letter-spacing:-.03em!important;line-height:1.06!important;max-width:none;color:var(--branco);margin:0}
 .linhas .linha{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .linhas [data-linha]{display:block}
-.linha--dir{text-align:right}
-.topo__base{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:10svh;align-self:end}
+.linha--dir{text-align:left}
+.topo__base{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:40px}
 .home .topo__frase{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:44ch}
 .topo__acao{border-radius:0!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none}
 .topo__acao:hover{background:var(--nevoa)!important}
 
 /* ---------- Situações ---------- */
-.situacoes{background:var(--grafite);color:var(--branco);padding:160px 0 140px}
+.situacoes{background:var(--grafite);color:var(--branco);padding:120px 0 112px}
 .situacoes__cabeca{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;margin-bottom:56px}
 .situacoes__cabeca h2{color:var(--branco)}
 .home .situacoes__cabeca p{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:36ch}
@@ -46,7 +46,7 @@
 .item:hover,.item[open]{background:rgba(251,252,252,.07)}
 .item summary{
   list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 24px;align-items:center;gap:28px;
-  padding:26px 28px;color:var(--branco)
+  padding:20px 24px;color:var(--branco)
 }
 .item summary::-webkit-details-marker{display:none}
 .item summary::after{
@@ -78,14 +78,14 @@
 .situacoes__fim a{color:var(--branco);font-weight:700;text-underline-offset:3px}
 
 /* ---------- Campo de cor: o compromisso ---------- */
-.faixa{background:var(--pedra);color:var(--branco);min-height:82svh;display:flex}
+.faixa{background:var(--pedra);color:var(--branco);display:flex}
 .faixa__grade{width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr}
-.home .faixa__grade{padding-top:120px!important;padding-bottom:44px!important}
+.home .faixa__grade{padding-top:112px!important;padding-bottom:104px!important}
 .home .faixa__texto{grid-column:8 / span 4;grid-row:1;margin:0;font-size:var(--lead);line-height:1.5;color:var(--branco);max-width:32ch}
-.home .faixa__frase{grid-column:1 / -1;grid-row:2;align-self:end;font-size:var(--xl)!important;line-height:.98!important;letter-spacing:-.04em!important;color:var(--branco);margin:0;padding-top:64px}
+.home .faixa__frase{grid-column:1 / -1;grid-row:2;align-self:end;font-size:var(--xl)!important;line-height:1.06!important;letter-spacing:-.03em!important;color:var(--branco);margin:0;padding-top:48px}
 
 /* ---------- Como funciona: itinerário em papel ---------- */
-.roteiro{background:var(--nevoa);padding:180px 0}
+.roteiro{background:var(--nevoa);padding:128px 0}
 .roteiro__grade{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 32px;align-items:start}
 .roteiro__cabeca{grid-column:1 / span 5}
 .home .roteiro__cabeca p{margin:24px 0 0;font-size:var(--lead);line-height:1.5;color:var(--grafite);max-width:30ch}
@@ -103,7 +103,7 @@
 .home .papeleta__total{margin:28px -36px 0;padding:0 36px;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--grafite);color:var(--branco);font-weight:700;font-size:var(--corpo)}
 
 /* ---------- Quem atende ---------- */
-.equipe{background:var(--branco);padding:180px 0 160px}
+.equipe{background:var(--branco);padding:128px 0 120px}
 .equipe__cabeca{max-width:none;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;margin-bottom:72px}
 .home .equipe__cabeca p{margin:0;font-size:var(--lead);line-height:1.45;color:var(--grafite);max-width:36ch}
 .equipe__mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
@@ -122,11 +122,11 @@
 .fatos a{color:var(--grafite);text-underline-offset:3px}
 
 /* ---------- Contato em linhas grandes ---------- */
-.falar{background:var(--branco);padding-bottom:120px;display:block}
-.home .contato__linha{display:flex;align-items:flex-end;min-height:150px;margin:0;padding-bottom:26px;font-family:var(--titulo);font-weight:500;font-size:var(--l);line-height:1;letter-spacing:-.03em;color:var(--grafite);text-decoration:none;background:var(--nevoa);transition:background-color .25s ease,color .25s ease}
+.falar{background:var(--branco);padding:32px 0 112px;display:block}
+.home .contato__linha{display:flex;align-items:flex-end;min-height:96px;margin:0;padding-bottom:22px;font-family:var(--titulo);font-weight:500;font-size:var(--l);line-height:1;letter-spacing:-.03em;color:var(--grafite);text-decoration:none;background:var(--nevoa);transition:background-color .25s ease,color .25s ease}
 .contato__linha:nth-of-type(odd){background:#EDF1F3}
 .contato__linha > .wrap{display:block;width:100%}
-.home .contato__linha--titulo{font-weight:600!important;background:var(--branco)!important;min-height:120px}
+.home .contato__linha--titulo{font-weight:600!important;background:var(--branco)!important;min-height:88px}
 a.contato__linha:hover,a.contato__linha:focus-visible{background:var(--pedra);color:var(--branco);outline:none}
 a.contato__linha > .wrap{transition:transform .35s var(--ease)}
 a.contato__linha:hover > .wrap{transform:translateX(10px)}
@@ -138,13 +138,13 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 .home .contato__nota{max-width:calc(52ch + 2 * var(--margem))}
 
 /* ---------- Rodapé: o nome fecha a página ---------- */
-.home footer.fim{position:sticky;bottom:0;z-index:0;min-height:100svh;display:grid;grid-template-rows:auto 1fr;padding:40px 0 28px!important;background:var(--grafite)!important}
+.home footer.fim{position:relative;z-index:0;display:grid;grid-template-rows:auto auto;gap:72px;padding:80px 0 40px!important;background:var(--grafite)!important}
 .fim__colunas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
 .home .fim p{font-size:var(--peq)!important;line-height:1.6!important;color:var(--gelo);margin:0}
 .home .fim .fim__forte{color:var(--branco);margin-bottom:6px}
 .fim a{color:var(--branco)!important}
 .fim__marca{align-self:end}
-.fim__marca img{display:block;width:100%;height:auto;margin-bottom:20px}
+.fim__marca img{display:block;width:min(360px,70%);height:auto;margin-bottom:24px}
 .home .fim .fim__legal{font-size:13px!important;max-width:62ch}
 
 /* ---------- Movimento ---------- */
@@ -183,11 +183,11 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 
 /* ---------- Celular: composição própria ---------- */
 @media (max-width:720px){
-  .home{--xl:11.4vw;--margem:18px}
-  .home .topo__grade{padding-top:calc(76px + 8svh)!important;padding-bottom:22px!important}
+  .home{--xl:clamp(32px,9vw,40px);--margem:18px}
+  .home .topo__grade{padding-top:calc(64px + 72px)!important;padding-bottom:64px!important}
   .home .topo h1{line-height:.92!important}
   .linha--dir{text-align:left}
-  .topo__base{flex-direction:column;align-items:stretch;gap:20px;padding-top:8svh}
+  .topo__base{flex-direction:column;align-items:stretch;gap:20px;padding-top:28px}
   .home .topo__frase{font-size:var(--corpo)}
   .topo__acao{width:100%}
   .situacoes{padding:96px 0 88px}
@@ -204,7 +204,7 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
   .home .faixa__texto{grid-column:1 / -1!important;grid-row:2!important;font-size:var(--corpo);max-width:none;margin-top:28px}
   .home .faixa__frase{grid-row:1!important;padding-top:0!important}
   .faixa__grade{grid-template-rows:auto auto!important}
-  .home .faixa__frase{font-size:11vw!important}
+  .home .faixa__frase{font-size:var(--xl)!important}
   .roteiro{padding:96px 0}
   .roteiro__cabeca,.papeleta{grid-column:1 / -1}
   .papeleta{margin-top:36px;padding:28px 22px 56px;max-width:none}
@@ -218,9 +218,9 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
   .home .equipe__cabeca p{font-size:var(--corpo)}
   .equipe__mosaico > .equipe__foto figcaption{position:static;width:auto;max-width:none;padding:16px 0 0;background:none}
   .equipe__lado{grid-template-columns:1fr;gap:24px}
-  .home .contato__linha{min-height:84px;padding-bottom:18px;font-size:clamp(26px,8vw,40px)}
+  .home .contato__linha{min-height:72px;padding-bottom:16px;font-size:clamp(22px,6.4vw,28px)}
   .so-largo{display:none}
-  .home .contato__linha--titulo{min-height:96px}
+  .home .contato__linha--titulo{min-height:72px}
   .contato__linha--acao{padding-top:20px;min-height:0}
   .contato__linha--acao > .wrap{flex-direction:column;align-items:stretch}
   .contato__linha--acao .btn{width:100%}
