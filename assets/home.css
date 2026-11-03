@@ -119,3 +119,44 @@
   .passos li{padding-top:14px}
 }
 @media (prefers-reduced-motion:reduce){.duvida summary::after{transition:none}}
+
+/* ---------- Ordem invertida: abertura escura, compromisso claro ---------- */
+.abertura{
+  position:relative;overflow:hidden;color:var(--branco);
+  background:radial-gradient(130% 150% at 0% 0%,#34474F 0%,#2B3B43 24%,#243239 44%,var(--grafite) 66%,#1C282E 100%)
+}
+.abertura::before{content:"";position:absolute;inset:0;background-image:var(--papel);opacity:.1;mix-blend-mode:overlay;pointer-events:none}
+.abertura .wrap{position:relative;z-index:1}
+.home .abertura h1{color:var(--branco)}
+.abertura__lado p{color:var(--gelo)}
+.abertura .btn{background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important}
+.abertura .btn:hover{background:var(--nevoa)!important}
+.abertura .duvidas{border-top-color:rgba(251,252,252,.7)}
+.abertura .duvidas__intro{color:var(--gelo);border-bottom-color:rgba(174,190,198,.25)}
+.abertura .duvida{border-bottom-color:rgba(174,190,198,.25)}
+.abertura .duvida summary{color:var(--branco)}
+.abertura .duvida summary::after{
+  background:linear-gradient(var(--branco),var(--branco)) center/14px 2px no-repeat,linear-gradient(var(--branco),var(--branco)) center/2px 14px no-repeat
+}
+.abertura .duvida__area{color:var(--gelo)}
+.abertura .duvida summary:hover .duvida__pergunta{color:var(--gelo)}
+.abertura .duvida summary:focus-visible{outline-color:var(--gelo)}
+.abertura .duvida__corpo p,.abertura .duvida__corpo li{color:var(--nevoa)}
+.abertura .duvida__corpo li::before{background:var(--gelo)}
+.abertura .text-link{color:var(--gelo)!important}
+.abertura .text-link:hover{color:var(--branco)!important}
+.abertura .duvida--empresa .duvida__pergunta{color:var(--gelo)}
+.abertura .duvidas__fim{color:var(--gelo)}
+.abertura .duvidas__fim a{color:var(--branco)}
+
+.compromisso-faixa{background:var(--nevoa);color:var(--grafite)}
+.compromisso-faixa::before{display:none}
+.compromisso-faixa::after{
+  background-image:url("/assets/simbolo-zappala.svg");opacity:.09;filter:none;width:460px;height:460px;right:-40px
+}
+.home .compromisso-faixa h2{color:var(--grafite)}
+.compromisso-faixa__sub{color:var(--apoio)}
+.garantias div{border-top:2px solid var(--grafite)}
+.garantias dt{color:var(--grafite)}
+.garantias dd{color:var(--apoio)}
+.equipe-faixa{border-top:1px solid var(--linha)}
