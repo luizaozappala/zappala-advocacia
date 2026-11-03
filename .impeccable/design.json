@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T01:48:54.620986Z",
+  "title": "Design System: Zappalá Advocacia & Consultoria",
+  "extensions": {
+    "colorMeta": {
+      "grafite-azulado": {
+        "role": "primary",
+        "displayName": "Grafite azulado",
+        "canonical": "#1F2C33",
+        "tonalRamp": [
+          "#1D2930",
+          "#30444F",
+          "#43606F",
+          "#577B8F",
+          "#7095A8",
+          "#99B3C1",
+          "#C6D4DC",
+          "#EFF3F5"
+        ]
+      },
+      "azul-pedra": {
+        "role": "secondary",
+        "displayName": "Azul-pedra",
+        "canonical": "#4B6C7C",
+        "tonalRamp": [
+          "#1D2A30",
+          "#30454F",
+          "#43616F",
+          "#567D8F",
+          "#7096A9",
+          "#99B4C1",
+          "#C6D5DC",
+          "#EFF3F5"
+        ]
+      },
+      "apoio": {
+        "role": "neutral",
+        "displayName": "Apoio",
+        "canonical": "#4E6774",
+        "tonalRamp": [
+          "#1F292E",
+          "#33444C",
+          "#485F6B",
+          "#5C7A89",
+          "#7693A3",
+          "#9DB2BD",
+          "#C8D4DA",
+          "#F0F3F5"
+        ]
+      },
+      "gelo": {
+        "role": "neutral",
+        "displayName": "Gelo",
+        "canonical": "#AEBEC6",
+        "tonalRamp": [
+          "#20282D",
+          "#35434B",
+          "#4A5E69",
+          "#5F7987",
+          "#7893A0",
+          "#9FB2BC",
+          "#C9D4D9",
+          "#F0F3F4"
+        ]
+      },
+      "nevoa": {
+        "role": "neutral",
+        "displayName": "Névoa",
+        "canonical": "#E3E9EC",
+        "tonalRamp": [
+          "#1F292E",
+          "#34444C",
+          "#485F6A",
+          "#5D7A89",
+          "#7694A2",
+          "#9EB3BD",
+          "#C8D4DA",
+          "#F0F3F5"
+        ]
+      },
+      "nevoa-clara": {
+        "role": "neutral",
+        "displayName": "Névoa clara",
+        "canonical": "#EDF1F3",
+        "tonalRamp": [
+          "#1F292E",
+          "#33444C",
+          "#475F6B",
+          "#5C7A8A",
+          "#7594A3",
+          "#9DB3BE",
+          "#C8D4DA",
+          "#F0F3F5"
+        ]
+      },
+      "linha": {
+        "role": "neutral",
+        "displayName": "Linha",
+        "canonical": "#DCE3E6",
+        "tonalRamp": [
+          "#20292D",
+          "#35444A",
+          "#4A5F68",
+          "#607A86",
+          "#79949F",
+          "#A0B3BB",
+          "#C9D4D9",
+          "#F0F3F4"
+        ]
+      },
+      "branco": {
+        "role": "neutral",
+        "displayName": "Branco",
+        "canonical": "#FBFCFC",
+        "tonalRamp": [
+          "#212C2C",
+          "#374949",
+          "#4C6666",
+          "#628383",
+          "#7C9D9D",
+          "#A2B9B9",
+          "#CBD8D8",
+          "#F0F4F4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título do topo e frase do compromisso."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção e linhas do contato."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Perguntas das situações."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Frase de apoio sob um título."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido, mínimo 16px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Legendas, áreas, notas e rótulos."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-saida",
+        "value": "cubic-bezier(.2,.7,.2,1)",
+        "purpose": "Entrada do topo, abrir perguntas, deslizes de hover."
+      },
+      {
+        "name": "entrada-topo",
+        "value": "760ms, linhas com 110ms de intervalo",
+        "purpose": "Único momento de entrada da página."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "celular",
+        "value": "720px"
+      },
+      {
+        "name": "tablet",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal em fundo claro.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Falar com o escritório</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;min-height:52px;padding:14px 24px;border-radius:8px;background:#1F2C33;color:#FBFCFC;font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;font-weight:700;font-size:17px;text-decoration:none;transition:background-color .2s,transform .15s}.ds-btn:hover{background:#4E6774}.ds-btn:active{transform:scale(.98)}.ds-btn:focus-visible{outline:3px solid #4B6C7C;outline-offset:3px}"
+    },
+    {
+      "name": "Botão no fundo escuro",
+      "kind": "button",
+      "refersTo": "button-on-dark",
+      "description": "Ação principal sobre o grafite.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-dark\" href=\"#\">Falar com o escritório</a></div>",
+      "css": ".ds-dark{background:#1F2C33;padding:32px}.ds-btn-dark{display:inline-flex;align-items:center;min-height:52px;padding:14px 24px;border-radius:8px;background:#FBFCFC;color:#1F2C33;font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;font-weight:700;font-size:17px;text-decoration:none;transition:background-color .2s}.ds-btn-dark:hover{background:#E3E9EC}.ds-btn-dark:focus-visible{outline:3px solid #AEBEC6;outline-offset:3px}"
+    },
+    {
+      "name": "Faixa de pergunta",
+      "kind": "custom",
+      "refersTo": "question-row",
+      "description": "Dúvida real que abre o que separar e a mensagem pronta.",
+      "html": "<div class=\"ds-dark\"><details class=\"ds-q\"><summary><span class=\"ds-q-t\">O INSS negou meu benefício. E agora?</span><span class=\"ds-q-a\">INSS e aposentadoria</span></summary><p class=\"ds-q-b\">A negativa do INSS não é a palavra final, mas há prazo para recorrer.</p></details></div>",
+      "css": ".ds-dark{background:#1F2C33;padding:24px}.ds-q{border-radius:8px;background:rgba(251,252,252,.035);transition:background-color .3s}.ds-q:hover,.ds-q[open]{background:rgba(251,252,252,.07)}.ds-q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 24px;color:#FBFCFC}.ds-q summary::-webkit-details-marker{display:none}.ds-q summary:focus-visible{outline:3px solid #AEBEC6;outline-offset:-3px;border-radius:8px}.ds-q-t{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.025em}.ds-q-a{font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;font-size:15px;color:#AEBEC6}.ds-q-b{margin:0;padding:0 24px 24px;font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;font-size:17px;line-height:1.6;color:#E3E9EC}"
+    },
+    {
+      "name": "Linha de contato",
+      "kind": "custom",
+      "refersTo": "contact-row",
+      "description": "Um canal por linha, grande e clicável.",
+      "html": "<a class=\"ds-row\" href=\"#\">WhatsApp (31) 99237-7158</a>",
+      "css": ".ds-row{display:flex;align-items:flex-end;min-height:96px;padding:0 32px 22px;background:#EDF1F3;color:#1F2C33;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:500;font-size:40px;line-height:1.1;letter-spacing:-.03em;text-decoration:none;transition:background-color .25s,color .25s}.ds-row:hover,.ds-row:focus-visible{background:#4B6C7C;color:#FBFCFC;outline:none}"
+    },
+    {
+      "name": "Papeleta",
+      "kind": "card",
+      "refersTo": "slip",
+      "description": "Passo a passo do atendimento em folha branca.",
+      "html": "<div class=\"ds-slip\"><p class=\"ds-h\">Hoje</p><p class=\"ds-l\"><span>Você conta o que aconteceu</span><i></i><span class=\"ds-d\">pelo WhatsApp</span></p><p class=\"ds-l\"><span>Atualização do caso</span><i></i><span class=\"ds-d\">todo mês</span></p><p class=\"ds-tot\">Você sabe o que está acontecendo</p></div>",
+      "css": ".ds-slip{max-width:520px;background:#FBFCFC;border-radius:8px;overflow:hidden;padding:36px 36px 0;font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;font-size:17px;color:#1F2C33}.ds-h{font-weight:700;margin:0 0 8px}.ds-l{display:flex;align-items:baseline;gap:10px;margin:0;padding:5px 0}.ds-l i{flex:1;border-bottom:3px dotted #AEBEC6;transform:translateY(-4px)}.ds-d{color:#4E6774}.ds-tot{margin:28px -36px 0;padding:0 36px;min-height:56px;display:flex;align-items:center;background:#1F2C33;color:#FBFCFC;font-weight:700}"
+    },
+    {
+      "name": "Navegação",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Cabeçalho sobre o topo escuro.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-logo\">Zappalá</span><span class=\"ds-links\"><a class=\"is-cur\" href=\"#\">Em que ajudamos</a><a href=\"#\">Como funciona</a><a href=\"#\">Equipe</a></span><a class=\"ds-cta\" href=\"#\">Falar com o escritório</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 32px;background:#1F2C33;font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif;}.ds-logo{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:28px;color:#FBFCFC}.ds-links{display:flex;gap:24px}.ds-links a{color:#E3E9EC;font-size:16px;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}.ds-links a:hover,.ds-links a.is-cur{color:#FBFCFC;border-bottom-color:#AEBEC6}.ds-cta{background:#FBFCFC;color:#1F2C33;font-weight:700;font-size:16px;padding:11px 18px;border-radius:8px;text-decoration:none}.ds-cta:hover{background:#E3E9EC}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A conversa clara, bem explicada no papel",
+    "overview": "O site fala como uma advogada que senta ao lado da pessoa e explica, em português claro, o que está acontecendo. O topo e as situações acontecem num fundo grafite azulado, com uma luz suave vinda do canto: é a parte da conversa, onde as dúvidas reais das pessoas aparecem em letra grande e cada uma se abre ali mesmo. Depois a página clareia e vira papel bem organizado: o compromisso num campo de azul-pedra, o passo a passo numa folha branca sobre névoa, quem atende, e o contato em linhas grandes e simples.\n\nA densidade é baixa e o ritmo é calmo. Uma ideia por bloco, texto corrido confortável para quem lê no celular, nenhum enfeite que não carregue informação. O visual nunca sugere \"escritório de luxo\": nada de livros, mármore, caneta-tinteiro, balança, colunas, dourado ou bege.",
+    "keyCharacteristics": [
+      "Fundo escuro só onde há conversa (topo e situações); o resto é claro.",
+      "As perguntas das pessoas, nas palavras delas, são o elemento visual principal.",
+      "Separação por tom de fundo e espaço, sem fios nem sombras em repouso.",
+      "Cantos suavemente arredondados (8px) em botões e caixas; fotos com cantos retos.",
+      "Um único momento de entrada animada, no carregamento do topo."
+    ],
+    "rules": [
+      {
+        "name": "The Real White Rule",
+        "body": "O fundo claro é sempre o branco da paleta. Qualquer tom quente no fundo é erro.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "Azul-pedra é o único destaque. Ele aparece no compromisso, nos links e no foco, e em nenhum outro bloco grande da mesma página.",
+        "section": "colors"
+      },
+      {
+        "name": "The Corner Light Rule",
+        "body": "Fundo escuro de abertura leva uma luz suave vindo do canto superior esquerdo e uma textura fina de papel. É o único degradê do sistema.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plain Case Rule",
+        "body": "Nada em caixa alta espaçada, nenhum rótulo acima de título, nenhuma fonte mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Five Steps Rule",
+        "body": "Uma página usa display, headline, title, lead, body e label; nenhum tamanho a mais.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "Caixas, botões, fotos e linhas não têm sombra. Só o cabeçalho rolado ganha fundo sólido.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** começar cada bloco pela situação da pessoa, nas palavras dela.",
+      "**Do** separar seções por tom de fundo e espaço, com cerca de 120px entre elas no computador.",
+      "**Do** manter o texto corrido em grafite (no claro) ou névoa (no escuro) a 16px ou mais.",
+      "**Do** usar fotos reais com luz natural, tratadas com a mesma dessaturação leve e cantos retos.",
+      "**Do** respeitar a preferência por movimento reduzido: o conteúdo aparece sem deslocamento."
+    ],
+    "donts": [
+      "**Don't** usar rótulos em caixa alta espaçada, fonte mono, numeração 01/02/03 fora de sequência real, palavra destacada em outra cor no título ou setas \"→\" em botões.",
+      "**Don't** usar fundo bege, dourado, verde, fotos de banco, livros, mármore, caneta-tinteiro, balança, martelo ou colunas.",
+      "**Don't** pôr sombra em caixas em repouso, borda lateral colorida em avisos ou efeito de surgimento em todo bloco.",
+      "**Don't** repetir o mesmo cabeçalho de seção (título à esquerda, frase à direita) em seções seguidas.",
+      "**Don't** aumentar os títulos além da escala display: \"letra grande\" na Zappalá é proporcional, não de cartaz."
+    ]
+  }
+}

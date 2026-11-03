@@ -33,7 +33,7 @@
 .linha--dir{text-align:left}
 .topo__base{display:flex;flex-direction:column;align-items:flex-start;gap:32px;padding-top:28px}
 .home .topo__frase{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:44ch}
-.topo__acao{border-radius:0!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none}
+.topo__acao{border-radius:var(--raio)!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none}
 .topo__acao:hover{background:var(--nevoa)!important}
 
 /* ---------- Situações ---------- */
@@ -42,7 +42,7 @@
 .situacoes__cabeca h2{color:var(--branco)}
 .home .situacoes__cabeca p{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:36ch}
 .lista{display:flex;flex-direction:column;gap:6px}
-.item{background:rgba(251,252,252,.035);transition:background-color .3s ease}
+.item{border-radius:var(--raio);background:rgba(251,252,252,.035);transition:background-color .3s ease}
 .item:hover,.item[open]{background:rgba(251,252,252,.07)}
 .item summary{
   list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 24px;align-items:center;gap:28px;
@@ -54,7 +54,7 @@
   background:linear-gradient(var(--branco),var(--branco)) center/16px 2px no-repeat,linear-gradient(var(--branco),var(--branco)) center/2px 16px no-repeat /* taste-skill-ignore: ícone de mais desenhado, não é preenchimento */
 }
 .item[open] summary::after{transform:rotate(45deg)}
-.item summary:focus-visible{outline:3px solid var(--gelo);outline-offset:-3px}
+.item summary:focus-visible{outline:3px solid var(--gelo);outline-offset:-3px;border-radius:var(--raio)}
 .item__pergunta{font-family:var(--titulo);font-weight:600;font-size:var(--m);line-height:1.2;text-wrap:balance;letter-spacing:-.025em;transition:transform .35s var(--ease)}
 .item summary:hover .item__pergunta{transform:translateX(8px)}
 .item__area{font-size:var(--peq);color:var(--gelo);white-space:nowrap}
@@ -68,7 +68,7 @@
 .item__separe li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:2px;background:var(--gelo);transform:skewX(-40deg)}
 .item__mandar{
   justify-self:start;display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;
-  background:var(--branco);color:var(--grafite);font-weight:700;font-size:var(--peq);text-decoration:none;transition:background-color .2s ease,transform .15s ease
+  border-radius:var(--raio);background:var(--branco);color:var(--grafite);font-weight:700;font-size:var(--peq);text-decoration:none;transition:background-color .2s ease,transform .15s ease
 }
 .item__mandar:hover{background:var(--nevoa)}
 .item__mandar:active,.btn:active{transform:scale(.98)}
@@ -90,7 +90,7 @@
 .roteiro__cabeca{grid-column:1 / span 5}
 .home .roteiro__cabeca p{margin:24px 0 0;font-size:var(--lead);line-height:1.5;color:var(--grafite);max-width:30ch}
 .papeleta{
-  grid-column:7 / span 5;background:var(--branco);padding:36px 36px 0;max-width:520px;
+  grid-column:7 / span 5;background:var(--branco);padding:36px 36px 0;max-width:520px;border-radius:var(--raio);overflow:hidden;
 }
 .home .papeleta h3{font-family:var(--texto)!important;font-weight:700!important;font-size:var(--corpo)!important;letter-spacing:0!important;margin:28px 0 8px}
 .home .papeleta h3:first-child{margin-top:0}
@@ -99,7 +99,7 @@
 .papeleta dt{flex:none;max-width:62%}
 .papeleta dl div::after{content:"";order:1;flex:1;border-bottom:3px dotted #AEBEC6;transform:translateY(-4px)}
 .papeleta dd{order:2;margin:0;flex:none;color:var(--apoio)}
-.home .papeleta__total{margin:28px -36px 0;min-height:56px;padding:0 36px;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--grafite);color:var(--branco);font-weight:700;font-size:var(--corpo)}
+.home .papeleta__total{border-radius:0 0 var(--raio) var(--raio);margin:28px -36px 0;min-height:56px;padding:0 36px;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--grafite);color:var(--branco);font-weight:700;font-size:var(--corpo)}
 
 /* ---------- Quem atende ---------- */
 .equipe{background:var(--branco);padding:128px 0 120px}
@@ -130,7 +130,7 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 .contato__linha--info{color:var(--apoio)}
 .contato__linha--acao{background:var(--grafite)!important;color:var(--branco)}
 .contato__linha--acao > .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-.contato__linha--acao .btn{border-radius:0!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none;font-family:var(--texto)!important;letter-spacing:0}
+.contato__linha--acao .btn{border-radius:var(--raio)!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none;font-family:var(--texto)!important;letter-spacing:0}
 .home .contato__nota{margin-top:24px!important;font-size:var(--peq);color:var(--apoio);max-width:none}
 .home .contato__nota{max-width:calc(52ch + 2 * var(--margem))}
 
