@@ -104,13 +104,13 @@ function transform(page, html) {
     }
     html = html.replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/i, '$1' + url + '$2');
   }
+  html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
+  html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
   // Avoid sending visitors and crawlers through Cloudflare's .html redirects.
   html = html.replace(/href="(?:\.\/|\/)?index\.html(#[^"]*)?"/g, (_m, hash = '') => 'href="/' + hash + '"');
   html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha)\.html(#[^"]*)?"/g,
     (_m, route, hash = '') => 'href="/' + route + hash + '"');
   html = html.replace(/publicacao\.html\?slug=/g, '/publicacao?slug=');
-  html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
-  html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
   // página individual de publicação usa um cabeçalho próprio (.mast)
   html = html.replace(/(<a\b[^>]*class="[^"]*\bbrand\b[^"]*"[^>]*>)(?!<img)[\s\S]*?(<\/a>)/g,
     '$1<img src="/assets/logo-zappala.svg" alt="Zappalá advocacia &amp; consultoria" width="170" height="52">$2');
