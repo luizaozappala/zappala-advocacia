@@ -118,6 +118,7 @@ function transform(page, html) {
         node.name = 'Zappalá Advocacia & Consultoria';
         delete node.address; // The business does not receive clients at a fixed public address.
         node.telephone = '+55-31-99237-7158';
+        node.areaServed = legalService.areaServed;
         return '<script type="application/ld+json">' + JSON.stringify(node) + '</script>';
       }
     } catch (error) {
