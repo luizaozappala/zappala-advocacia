@@ -49,7 +49,7 @@ const footer = `<footer><div class="wrap">
 <p style="margin-top:14px">Presencial em Belo Horizonte/MG, com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
 <div><h4>Navegação</h4><p><a href="/#areas">Em que ajudamos</a><br><a href="/#retorno">Acompanhamento do caso</a><br><a href="/#atendimento">Como funciona</a><br><a href="/equipe.html">Equipe</a><br><a href="/informativos.html">Informativos</a></p></div>
 </div>
-<div class="foot-legal">Gleice Zappalá, advogada inscrita na OAB/MG sob o nº 145.047. Zappalá Advocacia &amp; Consultoria. Não atuamos na área criminal.<br><br>Conteúdo informativo, de acordo com o Código de Ética e Disciplina da OAB e o Provimento CFOAB nº 205/2021. As informações deste site não são promessa de resultado e não substituem a análise do seu caso.<br><br>As informações que você enviar por WhatsApp ou e-mail são usadas para verificar disponibilidade, conflito de interesses e uma eventual contratação, de acordo com a Lei Geral de Proteção de Dados.</div>
+<div class="foot-legal">Gleice Zappalá, advogada inscrita na OAB/MG sob o nº 145.047. Zappalá Advocacia &amp; Consultoria.<br><br>Conteúdo informativo, de acordo com o Código de Ética e Disciplina da OAB e o Provimento CFOAB nº 205/2021. As informações deste site não são promessa de resultado e não substituem a análise do seu caso.<br><br>As informações que você enviar por WhatsApp ou e-mail são usadas para verificar disponibilidade, conflito de interesses e uma eventual contratação, de acordo com a Lei Geral de Proteção de Dados.</div>
 </div></footer>`;
 
 const legalService = {

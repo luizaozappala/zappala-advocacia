@@ -120,13 +120,13 @@
 
 /* ---------- Contato em linhas grandes ---------- */
 .falar{background:var(--branco);padding:32px 0 112px;display:block}
-.home .contato__linha{display:flex;align-items:flex-end;min-height:96px;margin:0;padding-bottom:22px;font-family:var(--titulo);font-weight:500;font-size:var(--l);line-height:1.1;letter-spacing:-.03em;color:var(--grafite);text-decoration:none;background:var(--nevoa);transition:background-color .25s ease,color .25s ease}
+.home .contato__linha{display:flex;align-items:center;min-height:64px;margin:0;padding:14px 0;font-family:var(--titulo);font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.1;letter-spacing:-.03em;color:var(--grafite);text-decoration:none;background:var(--nevoa);transition:background-color .25s ease,color .25s ease}
 .contato__linha:nth-of-type(odd){background:#EDF1F3}
 .contato__linha > .wrap{display:block;width:100%}
-.home .contato__linha--titulo{font-weight:600!important;background:var(--branco)!important;min-height:88px}
+.home .contato__linha--titulo{font-weight:600!important;background:var(--branco)!important;min-height:0;padding:0 0 24px!important;font-size:var(--l)!important}
 a.contato__linha:hover,a.contato__linha:focus-visible{background:var(--pedra);color:var(--branco);outline:none}
 a.contato__linha > .wrap{transition:transform .35s var(--ease)}
-a.contato__linha:hover > .wrap{transform:translateX(10px)}
+a.contato__linha:hover > .wrap{transform:translateX(6px)}
 .contato__linha--info{color:var(--apoio)}
 .contato__linha--acao{background:var(--grafite)!important;color:var(--branco)}
 .contato__linha--acao > .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
@@ -211,9 +211,9 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
   .equipe__cabeca{grid-template-columns:1fr;gap:16px;margin-bottom:36px}
   .home .equipe__cabeca p{font-size:var(--corpo)}
   .equipe__lado{grid-template-columns:1fr;gap:24px}
-  .home .contato__linha{min-height:72px;padding-bottom:16px;font-size:clamp(22px,6.4vw,28px)}
+  .home .contato__linha{min-height:56px;padding:12px 0;font-size:19px}
   .so-largo{display:none}
-  .home .contato__linha--titulo{min-height:72px}
+  .home .contato__linha--titulo{padding-bottom:16px!important}
   .contato__linha--acao{padding-top:20px;min-height:0}
   .contato__linha--acao > .wrap{flex-direction:column;align-items:stretch}
   .contato__linha--acao .btn{width:100%}
