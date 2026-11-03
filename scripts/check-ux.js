@@ -40,7 +40,7 @@ for (const page of pages) {
   checked++;
 }
 const css = fs.readFileSync(path.join(dist, 'assets', 'zappala-v2.css'), 'utf8');
-assert.match(css, /@media\s*\(max-width:960px\)/,
+assert.match(css, /@media\s*\(max-width:1080px\)/,
   'Missing responsive menu breakpoint');
 assert.match(css, /\.mobile-nav:not\(\[hidden\]\)/,
   'Menu expanded state missing');
