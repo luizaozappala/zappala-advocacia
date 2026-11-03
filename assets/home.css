@@ -1,269 +1,231 @@
-/* Home — a dúvida real é o elemento principal.
-   Escala: 56 / 36 / 22 / 18 / 15. Um único bloco escuro (o compromisso). */
+/* Home Zappalá — direção "type-only-statement" (taste skill, seed 1843823708), com a identidade v2.
+   Escala: XL (título) · L (títulos de seção e linhas de contato) · M (dúvidas) · 21 · 17 · 15.
+   Separação por tom e espaço, sem fios. A única luz em degradê é a do topo, pedida pela marca. */
 
-
-/* ---------- Abertura ---------- */
-.abertura{padding:172px 0 88px;background:var(--branco)}
-.abertura__topo{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;align-items:end;padding-bottom:56px}
-.home .abertura h1{font-size:clamp(36px,4.4vw,56px)!important;line-height:1.04!important;letter-spacing:-.03em!important;max-width:15ch}
-.abertura__lado p{margin:0 0 24px;font-size:18px;line-height:1.6;color:var(--apoio);max-width:42ch}
-
-.duvidas{border-top:2px solid var(--grafite)}
-.duvidas__intro{margin:0;padding:18px 0;font-size:15px;color:var(--apoio);border-bottom:1px solid var(--linha)}
-
-.duvida{border-bottom:1px solid var(--linha)}
-.duvida summary{
-  list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 28px;align-items:baseline;gap:24px;
-  padding:26px 0 24px;color:var(--grafite)
+.home{
+  --xl:clamp(64px,11.4vw,196px);
+  --l:clamp(36px,4.6vw,72px);
+  --m:clamp(23px,2.45vw,36px);
+  --lead:21px;
+  --corpo:17px;
+  --peq:15px;
+  --margem:clamp(20px,3.4vw,56px);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
-.duvida summary::-webkit-details-marker{display:none}
-.duvida summary::after{
-  content:"";justify-self:end;align-self:center;width:14px;height:14px;
-  background:linear-gradient(var(--grafite),var(--grafite)) center/14px 2px no-repeat,linear-gradient(var(--grafite),var(--grafite)) center/2px 14px no-repeat;
-  transition:transform .2s ease
-}
-.duvida[open] summary::after{transform:rotate(45deg)}
-.duvida__pergunta{font-family:var(--titulo);font-weight:600;font-size:clamp(22px,2.6vw,36px);line-height:1.12;letter-spacing:-.022em}
-.duvida__area{font-size:15px;color:var(--apoio);white-space:nowrap}
-.duvida summary:hover .duvida__pergunta{color:var(--pedra)}
-.duvida summary:focus-visible{outline:3px solid var(--pedra);outline-offset:4px}
-.duvida__corpo{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:10px 56px;padding:2px 52px 32px 0}
-.duvida__corpo p{margin:0;font-size:18px;line-height:1.6;color:var(--grafite)}
-.duvida__corpo ul{margin:0;padding:0;list-style:none;columns:2;column-gap:32px}
-.duvida__corpo li{font-size:18px;line-height:1.5;padding:3px 0 3px 18px;position:relative;break-inside:avoid}
-.duvida__corpo li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--pedra);transform:skewX(-40deg)}
-.duvida__links{grid-column:1 / -1;display:flex;gap:20px;padding-top:6px}
-.duvida--empresa .duvida__pergunta{font-size:clamp(20px,2vw,26px);color:var(--apoio)}
-.duvidas__fim{margin:0;padding:22px 0 0;font-size:18px;color:var(--apoio)}
-.duvidas__fim a{color:var(--grafite);text-underline-offset:3px}
+.home .wrap{max-width:none!important;padding:0 var(--margem)!important}
+.home .masthead__inner{max-width:none;padding-left:var(--margem)!important;padding-right:var(--margem)!important}
+.home .masthead.is-solid{border-bottom-color:transparent!important}
+.home main{position:relative;z-index:1;background:var(--branco)}
+.home p{font-size:var(--corpo)}
+.home h2{font-size:var(--l)!important;line-height:1!important;letter-spacing:-.035em!important}
 
-/* ---------- Compromisso: o único momento escuro ---------- */
-.compromisso-faixa{
-  position:relative;overflow:hidden;color:var(--branco);padding:112px 0 104px;
-  background:radial-gradient(130% 150% at 0% 0%,#34474F 0%,#2B3B43 24%,#243239 44%,var(--grafite) 66%,#1C282E 100%)
+/* ---------- Topo: duas linhas, de margem a margem ---------- */
+.topo{
+  position:relative;overflow:hidden;color:var(--branco);min-height:100svh;display:flex;
+  background:radial-gradient(110% 120% at 0% 0%,#3A4E57 0%,#2C3C44 26%,#24323A 48%,var(--grafite) 72%) var(--grafite)
 }
-.compromisso-faixa::before{content:"";position:absolute;inset:0;background-image:var(--papel);opacity:.1;mix-blend-mode:overlay;pointer-events:none}
-.compromisso-faixa::after{
-  content:"";position:absolute;pointer-events:none;width:520px;height:520px;right:-60px;top:50%;transform:translateY(-50%);
-  background:url("/assets/simbolo-zappala-relevo.svg") no-repeat center/contain;filter:drop-shadow(0 30px 50px rgba(5,10,14,.35));opacity:.75
+.topo::before{content:"";position:absolute;inset:0;background-image:var(--papel);opacity:.09;mix-blend-mode:overlay;pointer-events:none}
+.topo__grade{position:relative;z-index:1;width:100%;display:grid;grid-template-rows:auto 1fr}
+.home .topo__grade{padding-top:calc(76px + 12svh)!important;padding-bottom:36px!important}
+.home .topo h1{font-size:var(--xl)!important;font-weight:600!important;letter-spacing:-.05em!important;line-height:.9!important;max-width:none;color:var(--branco);margin:0}
+.linhas .linha{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.linhas [data-linha]{display:block}
+.linha--dir{text-align:right}
+.topo__base{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-top:10svh;align-self:end}
+.home .topo__frase{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:44ch}
+.topo__acao{border-radius:0!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none}
+.topo__acao:hover{background:var(--nevoa)!important}
+
+/* ---------- Situações ---------- */
+.situacoes{background:var(--grafite);color:var(--branco);padding:160px 0 140px}
+.situacoes__cabeca{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;margin-bottom:56px}
+.situacoes__cabeca h2{color:var(--branco)}
+.home .situacoes__cabeca p{margin:0;font-size:var(--lead);line-height:1.45;color:var(--nevoa);max-width:36ch}
+.lista{display:flex;flex-direction:column;gap:6px}
+.item{background:rgba(251,252,252,.035);transition:background-color .3s ease}
+.item:hover,.item[open]{background:rgba(251,252,252,.07)}
+.item summary{
+  list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 24px;align-items:center;gap:28px;
+  padding:26px 28px;color:var(--branco)
 }
-.compromisso-faixa .wrap{position:relative;z-index:1}
-.home .compromisso-faixa h2{font-size:clamp(32px,4vw,56px)!important;line-height:1.05!important;letter-spacing:-.03em!important;max-width:16ch;color:var(--branco)}
-.compromisso-faixa__sub{margin:24px 0 0;font-size:22px;line-height:1.45;color:var(--gelo);max-width:34ch}
-.garantias{margin:64px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;max-width:900px}
-.garantias div{padding-top:16px;border-top:1px solid rgba(174,190,198,.35)}
-.garantias dt{font-family:var(--titulo);font-weight:600;font-size:18px;color:var(--branco)}
-.garantias dd{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--gelo)}
-
-/* ---------- Etapas ---------- */
-.etapas-faixa{padding:96px 0;background:var(--branco)}
-.home .etapas-faixa h2{font-size:clamp(28px,2.8vw,36px)!important}
-.passos{margin:40px 0 0;padding:0;list-style:none;counter-reset:passo;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px}
-.passos li{counter-increment:passo;padding-top:18px;border-top:2px solid var(--grafite);position:relative}
-.passos li::before{content:counter(passo);display:block;font-family:var(--titulo);font-weight:600;font-size:15px;color:var(--pedra);margin-bottom:10px}
-.home .passos h3{font-size:18px!important;line-height:1.25!important}
-.passos p{margin:8px 0 0;font-size:15px;line-height:1.55;color:var(--apoio)}
-
-/* ---------- Equipe ---------- */
-.equipe-faixa{padding:96px 0;background:var(--branco);border-top:1px solid var(--linha)}
-.equipe-faixa__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.home .equipe-faixa h2{font-size:clamp(28px,2.8vw,36px)!important}
-.equipe-faixa__texto{margin:18px 0 18px;font-size:18px;line-height:1.6;color:var(--apoio);max-width:34ch}
-.retrato{margin:0}
-.retrato img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;filter:grayscale(.55) contrast(1.04) brightness(1.02);background:var(--nevoa)}
-.retrato figcaption{margin-top:14px;font-size:15px;line-height:1.5;color:var(--apoio)}
-.retrato strong{display:block;font-family:var(--titulo);font-weight:600;font-size:18px;color:var(--grafite)}
-
-/* ---------- Contato ---------- */
-.contato-faixa{padding:96px 0;background:var(--nevoa)}
-.contato-faixa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
-.home .contato-faixa h2{font-size:clamp(32px,3.6vw,48px)!important;letter-spacing:-.03em!important}
-.contato-faixa__texto{margin:18px 0 0;font-size:18px;line-height:1.6;max-width:40ch}
-.contato-faixa__canais{margin:28px 0 0;font-size:18px;line-height:1.8;color:var(--apoio)}
-.contato-faixa__canais a{color:var(--grafite);text-underline-offset:3px}
-.contato-faixa__form{background:var(--branco);padding:32px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.contato-faixa__form label{font-weight:700;font-size:18px}
-.contato-faixa__form select{
-  width:100%;font:inherit;font-size:18px;color:var(--grafite);background:var(--branco);border:1.5px solid var(--apoio);border-radius:4px;
-  padding:13px 44px 13px 14px;appearance:none;-webkit-appearance:none;
-  background-image:linear-gradient(45deg,transparent 50%,var(--grafite) 50%),linear-gradient(135deg,var(--grafite) 50%,transparent 50%);
-  background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat
+.item summary::-webkit-details-marker{display:none}
+.item summary::after{
+  content:"";justify-self:end;width:16px;height:16px;transition:transform .3s var(--ease);
+  background:linear-gradient(var(--branco),var(--branco)) center/16px 2px no-repeat,linear-gradient(var(--branco),var(--branco)) center/2px 16px no-repeat /* taste-skill-ignore: ícone de mais desenhado, não é preenchimento */
 }
-.contato-faixa__form .dica{margin:0 0 14px;font-size:15px;color:var(--apoio)}
-.contato-faixa__form .status{margin:0;font-size:15px;color:var(--apoio);min-height:1em}
-.contato-faixa__form .nota{margin:8px 0 0;font-size:15px;line-height:1.55;color:var(--apoio)}
-
-/* ---------- Responsivo ---------- */
-@media (max-width:980px){
-  .abertura__topo{grid-template-columns:1fr;gap:24px;padding-bottom:40px}
-  .passos{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
-  .equipe-faixa__grid{grid-template-columns:1fr 1fr}
-  .equipe-faixa__grid > div:first-child{grid-column:1 / -1}
-  .garantias{grid-template-columns:1fr;gap:20px}
-  .compromisso-faixa::after{width:340px;height:340px;right:-140px;opacity:.4}
+.item[open] summary::after{transform:rotate(45deg)}
+.item summary:focus-visible{outline:3px solid var(--gelo);outline-offset:-3px}
+.item__pergunta{font-family:var(--titulo);font-weight:600;font-size:var(--m);line-height:1.12;letter-spacing:-.025em;transition:transform .35s var(--ease)}
+.item summary:hover .item__pergunta{transform:translateX(8px)}
+.item__area{font-size:var(--peq);color:var(--gelo);white-space:nowrap}
+.item--empresa .item__pergunta{color:var(--gelo)}
+.item__corpo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr);gap:32px 48px;padding:4px 28px 34px;align-items:start}
+.home .item__orienta{margin:0;color:var(--nevoa);line-height:1.6;max-width:46ch}
+.item__orienta a{color:var(--branco);text-underline-offset:3px}
+.home .item__separe p{margin:0 0 8px;font-weight:700;color:var(--branco)}
+.item__separe ul{margin:0;padding:0;list-style:none}
+.item__separe li{font-size:var(--corpo);line-height:1.5;color:var(--nevoa);padding:3px 0 3px 18px;position:relative}
+.item__separe li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:2px;background:var(--gelo);transform:skewX(-40deg)}
+.item__mandar{
+  justify-self:start;display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;
+  background:var(--branco);color:var(--grafite);font-weight:700;font-size:var(--peq);text-decoration:none;transition:background-color .2s ease,transform .15s ease
 }
-@media (max-width:720px){
-  .abertura{padding:150px 0 64px}
-  .duvida summary{grid-template-columns:minmax(0,1fr) 20px;gap:12px;padding:20px 0 18px}
-  .duvida__area{grid-column:1;grid-row:2;font-size:15px}
-  .duvida summary::after{grid-column:2;grid-row:1 / span 2}
-  .duvida__corpo{grid-template-columns:1fr;padding:0 0 24px;gap:12px}
-  .duvida__corpo ul{columns:1}
-  .contato-faixa__grid{grid-template-columns:1fr;gap:32px}
-  .contato-faixa__form{padding:22px}
-  .compromisso-faixa{padding:72px 0}
-  .compromisso-faixa__sub{font-size:19px}
-  .etapas-faixa,.equipe-faixa,.contato-faixa{padding:64px 0}
-  .passos{grid-template-columns:1fr;gap:22px}
-  .passos li{padding-top:14px}
-}
-@media (prefers-reduced-motion:reduce){.duvida summary::after{transition:none}}
+.item__mandar:hover{background:var(--nevoa)}
+.item__mandar:active,.btn:active{transform:scale(.98)}
+.item[open] .item__corpo{animation:abre .45s var(--ease)}
+@keyframes abre{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.home .situacoes__fim{margin:36px 0 0;font-size:var(--corpo);color:var(--nevoa)}
+.situacoes__fim a{color:var(--branco);font-weight:700;text-underline-offset:3px}
 
-/* ---------- Ordem invertida: abertura escura, compromisso claro ---------- */
-.abertura{
-  position:relative;overflow:hidden;color:var(--branco);
-  background:radial-gradient(130% 150% at 0% 0%,#34474F 0%,#2B3B43 24%,#243239 44%,var(--grafite) 66%,#1C282E 100%)
-}
-.abertura::before{content:"";position:absolute;inset:0;background-image:var(--papel);opacity:.1;mix-blend-mode:overlay;pointer-events:none}
-.abertura .wrap{position:relative;z-index:1}
-.home .abertura h1{color:var(--branco)}
-.abertura__lado p{color:var(--gelo)}
-.abertura .btn{background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important}
-.abertura .btn:hover{background:var(--nevoa)!important}
-.abertura .duvidas{border-top-color:rgba(251,252,252,.7)}
-.abertura .duvidas__intro{color:var(--gelo);border-bottom-color:rgba(174,190,198,.25)}
-.abertura .duvida{border-bottom-color:rgba(174,190,198,.25)}
-.abertura .duvida summary{color:var(--branco)}
-.abertura .duvida summary::after{
-  background:linear-gradient(var(--branco),var(--branco)) center/14px 2px no-repeat,linear-gradient(var(--branco),var(--branco)) center/2px 14px no-repeat
-}
-.abertura .duvida__area{color:var(--gelo)}
-.abertura .duvida summary:hover .duvida__pergunta{color:var(--gelo)}
-.abertura .duvida summary:focus-visible{outline-color:var(--gelo)}
-.abertura .duvida__corpo p,.abertura .duvida__corpo li{color:var(--nevoa)}
-.abertura .duvida__corpo li::before{background:var(--gelo)}
-.abertura .text-link{color:var(--gelo)!important}
-.abertura .text-link:hover{color:var(--branco)!important}
-.abertura .duvida--empresa .duvida__pergunta{color:var(--gelo)}
-.abertura .duvidas__fim{color:var(--gelo)}
-.abertura .duvidas__fim a{color:var(--branco)}
+/* ---------- Campo de cor: o compromisso ---------- */
+.faixa{background:var(--pedra);color:var(--branco);min-height:82svh;display:flex}
+.faixa__grade{width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr}
+.home .faixa__grade{padding-top:120px!important;padding-bottom:44px!important}
+.home .faixa__texto{grid-column:8 / span 4;grid-row:1;margin:0;font-size:var(--lead);line-height:1.5;color:var(--branco);max-width:32ch}
+.home .faixa__frase{grid-column:1 / -1;grid-row:2;align-self:end;font-size:var(--xl)!important;line-height:.9!important;letter-spacing:-.05em!important;color:var(--branco);margin:0;padding-top:64px}
 
-.compromisso-faixa{background:var(--nevoa);color:var(--grafite)}
-.compromisso-faixa::before{display:none}
-.compromisso-faixa::after{
-  background-image:url("/assets/simbolo-zappala.svg");opacity:.09;filter:none;width:460px;height:460px;right:-40px
+/* ---------- Como funciona: itinerário em papel ---------- */
+.roteiro{background:var(--nevoa);padding:180px 0}
+.roteiro__grade{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 32px;align-items:start}
+.roteiro__cabeca{grid-column:1 / span 5}
+.home .roteiro__cabeca p{margin:24px 0 0;font-size:var(--lead);line-height:1.5;color:var(--grafite);max-width:30ch}
+.papeleta{
+  grid-column:7 / span 5;background:var(--branco);padding:36px 36px 64px;max-width:520px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),95% 100%,90% calc(100% - 14px),85% 100%,80% calc(100% - 14px),75% 100%,70% calc(100% - 14px),65% 100%,60% calc(100% - 14px),55% 100%,50% calc(100% - 14px),45% 100%,40% calc(100% - 14px),35% 100%,30% calc(100% - 14px),25% 100%,20% calc(100% - 14px),15% 100%,10% calc(100% - 14px),5% 100%,0 calc(100% - 14px))
 }
-.home .compromisso-faixa h2{color:var(--grafite)}
-.compromisso-faixa__sub{color:var(--apoio)}
-.garantias div{border-top:2px solid var(--grafite)}
-.garantias dt{color:var(--grafite)}
-.garantias dd{color:var(--apoio)}
-.equipe-faixa{border-top:1px solid var(--linha)}
+.home .papeleta h3{font-family:var(--texto)!important;font-weight:700!important;font-size:var(--corpo)!important;letter-spacing:0!important;margin:28px 0 8px}
+.home .papeleta h3:first-child{margin-top:0}
+.papeleta dl{margin:0}
+.papeleta dl div{display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:var(--corpo);font-variant-numeric:tabular-nums}
+.papeleta dt{flex:none;max-width:62%}
+.papeleta dl div::after{content:"";order:1;flex:1;border-bottom:3px dotted #AEBEC6;transform:translateY(-4px)}
+.papeleta dd{order:2;margin:0;flex:none;color:var(--apoio)}
+.home .papeleta__total{margin:28px -36px 0;padding:0 36px;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--grafite);color:var(--branco);font-weight:700;font-size:var(--corpo)}
 
-/* =========================================================
-   Refinamento: respiro, luz em diagonal, uma entrada orquestrada
-   ========================================================= */
+/* ---------- Quem atende ---------- */
+.equipe{background:var(--branco);padding:180px 0 160px}
+.equipe__cabeca{max-width:none;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;margin-bottom:72px}
+.home .equipe__cabeca p{margin:0;font-size:var(--lead);line-height:1.45;color:var(--grafite);max-width:36ch}
+.equipe__mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.equipe__foto{margin:0;position:relative;overflow:clip}
+.equipe__mosaico > .equipe__foto{grid-column:1 / span 7}
+.equipe__foto img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 22%;filter:grayscale(.55) contrast(1.04)}
+.equipe__mosaico > .equipe__foto figcaption{position:absolute;top:0;right:0;width:320px;max-width:60%;background:var(--branco);padding:20px;font-size:var(--peq);line-height:1.5;color:var(--grafite)}
+.equipe__foto strong{display:block;font-family:var(--titulo);font-weight:600;font-size:var(--lead);margin-bottom:4px}
+.equipe__lado{grid-column:8 / span 5;display:flex;flex-direction:column;gap:28px}
+.equipe__foto--menor{background:var(--pedra)}
+.equipe__foto--menor img{aspect-ratio:5/4}
+.equipe__foto--menor figcaption{padding:16px 20px;background:var(--pedra);color:var(--branco);font-size:var(--peq);line-height:1.5}
+.fatos{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.fatos dt{font-size:var(--peq);color:var(--apoio)}
+.fatos dd{margin:2px 0 0;font-size:var(--corpo);color:var(--grafite)}
+.fatos a{color:var(--grafite);text-underline-offset:3px}
 
-/* Respiro */
-.abertura{padding:200px 0 128px}
-.abertura__topo{padding-bottom:88px;gap:80px}
-.duvidas__intro{padding:22px 0}
-.duvida summary{padding:34px 0 32px}
-.compromisso-faixa{padding:152px 0 144px}
-.garantias{margin-top:88px;gap:48px}
-.etapas-faixa,.equipe-faixa,.contato-faixa{padding:136px 0}
-.passos{margin-top:56px;gap:40px}
-.equipe-faixa__grid{gap:56px}
-.contato-faixa__grid{gap:96px}
+/* ---------- Contato em linhas grandes ---------- */
+.falar{background:var(--branco);padding-bottom:120px;display:block}
+.home .contato__linha{display:flex;align-items:flex-end;min-height:150px;margin:0;padding-bottom:26px;font-family:var(--titulo);font-weight:500;font-size:var(--l);line-height:1;letter-spacing:-.03em;color:var(--grafite);text-decoration:none;background:var(--nevoa);transition:background-color .25s ease,color .25s ease}
+.contato__linha:nth-of-type(odd){background:#EDF1F3}
+.contato__linha > .wrap{display:block;width:100%}
+.home .contato__linha--titulo{font-weight:600!important;background:var(--branco)!important;min-height:120px}
+a.contato__linha:hover,a.contato__linha:focus-visible{background:var(--pedra);color:var(--branco);outline:none}
+a.contato__linha > .wrap{transition:transform .35s var(--ease)}
+a.contato__linha:hover > .wrap{transform:translateX(10px)}
+.contato__linha--info{color:var(--apoio)}
+.contato__linha--acao{background:var(--grafite)!important;color:var(--branco)}
+.contato__linha--acao > .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.contato__linha--acao .btn{border-radius:0!important;background:var(--branco)!important;color:var(--grafite)!important;border-color:var(--branco)!important;flex:none;font-family:var(--texto)!important;letter-spacing:0}
+.home .contato__nota{margin-top:24px!important;font-size:var(--peq);color:var(--apoio);max-width:none}
+.home .contato__nota{max-width:calc(52ch + 2 * var(--margem))}
 
-/* Luz: canto + feixe diagonal no ângulo do símbolo + brilho baixo */
-.abertura{
-  background:
-    radial-gradient(60% 55% at 92% 108%,rgba(75,108,124,.32) 0%,rgba(75,108,124,0) 70%),
-    radial-gradient(120% 140% at 0% 0%,#3A4E57 0%,#2E3F47 20%,#26353C 40%,var(--grafite) 62%,#1A252B 100%)
-}
-.abertura::after{
-  content:"";position:absolute;pointer-events:none;inset:-20% -10%;
-  background:linear-gradient(130deg,rgba(251,252,252,0) 38%,rgba(251,252,252,.055) 47%,rgba(251,252,252,.015) 53%,rgba(251,252,252,0) 60%);
-}
-.abertura .duvidas{border-top:1px solid rgba(251,252,252,.55)}
+/* ---------- Rodapé: o nome fecha a página ---------- */
+.home footer.fim{position:sticky;bottom:0;z-index:0;min-height:100svh;display:grid;grid-template-rows:auto 1fr;padding:40px 0 28px!important;background:var(--grafite)!important}
+.fim__colunas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.home .fim p{font-size:var(--peq)!important;line-height:1.6!important;color:var(--gelo);margin:0}
+.home .fim .fim__forte{color:var(--branco);margin-bottom:6px}
+.fim a{color:var(--branco)!important}
+.fim__marca{align-self:end}
+.fim__marca img{display:block;width:100%;height:auto;margin-bottom:20px}
+.home .fim .fim__legal{font-size:13px!important;max-width:62ch}
 
-/* Perguntas: realce ao passar o mouse, abertura suave */
-.abertura .duvida{position:relative}
-.abertura .duvida summary{position:relative;transition:padding-left .35s cubic-bezier(.2,.7,.2,1)}
-.abertura .duvida summary::before{
-  content:"";position:absolute;inset:0 -28px;z-index:-1;opacity:0;
-  background:linear-gradient(90deg,rgba(174,190,198,.10),rgba(174,190,198,0) 70%);
-  transition:opacity .35s ease
-}
-.abertura .duvida summary:hover::before,.abertura .duvida[open] summary::before{opacity:1}
-.abertura .duvida summary:hover{padding-left:12px}
-.abertura .duvida summary:hover .duvida__pergunta{color:var(--branco)}
-.abertura .duvida__corpo{animation:corpo-in .45s cubic-bezier(.2,.7,.2,1)}
-@keyframes corpo-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-
-/* Entrada: título, texto e perguntas em sequência (uma vez, no carregamento) */
+/* ---------- Movimento ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .abertura h1,.abertura__lado,.duvidas__intro,.abertura .duvida,.duvidas__fim{
-    animation:entra .9s cubic-bezier(.2,.7,.2,1) both
-  }
-  .abertura__lado{animation-delay:.12s}
-  .duvidas__intro{animation-delay:.24s}
-  .abertura .duvida:nth-of-type(1){animation-delay:.30s}
-  .abertura .duvida:nth-of-type(2){animation-delay:.36s}
-  .abertura .duvida:nth-of-type(3){animation-delay:.42s}
-  .abertura .duvida:nth-of-type(4){animation-delay:.48s}
-  .abertura .duvida:nth-of-type(5){animation-delay:.54s}
-  .abertura .duvida:nth-of-type(6){animation-delay:.60s}
-  .abertura .duvida:nth-of-type(7){animation-delay:.66s}
-  .duvidas__fim{animation-delay:.74s}
-  .abertura .duvidas{animation:linha .9s cubic-bezier(.2,.7,.2,1) .18s both}
+  .js .topo [data-linha]{transform:translateY(105%);animation:sobe 760ms var(--ease) forwards;animation-delay:calc(var(--i) * 110ms + 80ms)}
+  .js .topo__base{opacity:0;animation:aparece 700ms var(--ease) 380ms forwards}
+  .js .linhas--rolagem [data-linha]{transform:translateY(105%);transition:transform 950ms var(--ease);transition-delay:calc(var(--i) * 110ms)}
+  .js .linhas--rolagem.is-in [data-linha]{transform:none}
+  .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease),transform 900ms var(--ease);transition-delay:var(--d,0ms)}
+  .js [data-reveal].is-in{opacity:1;transform:none}
+  .deriva{animation:deriva linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
 }
-@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes linha{from{border-top-color:rgba(251,252,252,0)}to{border-top-color:rgba(251,252,252,.55)}}
+@keyframes sobe{to{transform:none}}
+@keyframes aparece{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes deriva{from{transform:scale(1.1)}to{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){
-  .abertura .duvida summary,.abertura .duvida summary::before{transition:none}
-  .abertura .duvida__corpo{animation:none}
-  .abertura .duvida summary:hover{padding-left:0}
+  .item summary::after,.item__pergunta,a.contato__linha > .wrap{transition:none}
+  .item summary:hover .item__pergunta,a.contato__linha:hover > .wrap{transform:none}
+  .item[open] .item__corpo{animation:none}
 }
 
-/* Compromisso: névoa que se dissolve no branco, símbolo em relevo claro */
-.compromisso-faixa{background:linear-gradient(180deg,var(--nevoa) 0%,#EDF1F3 55%,var(--branco) 100%)}
-.compromisso-faixa::after{
-  background-image:url("/assets/simbolo-zappala-relevo-claro.svg");opacity:1;width:560px;height:560px;right:-20px;
-  filter:drop-shadow(0 24px 40px rgba(31,44,51,.10))
-}
-.home .compromisso-faixa h2{max-width:14ch;font-size:clamp(36px,4.6vw,64px)!important}
-.compromisso-faixa__sub{margin-top:32px}
-
-/* Etapas: o fio de cada passo é um degradê grafite → pedra */
-.passos li{border-top:0;padding-top:22px}
-.passos li::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--grafite),var(--pedra) 70%,rgba(75,108,124,.25))}
-
-/* Retratos com luz suave por cima */
-.retrato{position:relative}
-.retrato::after{content:"";position:absolute;left:0;right:0;top:0;aspect-ratio:4/5;pointer-events:none;
-  background:linear-gradient(180deg,rgba(31,44,51,0) 55%,rgba(31,44,51,.18) 100%)}
-
-/* Contato: fundo em degradê e cartão com sombra longa e suave */
-.contato-faixa{background:linear-gradient(160deg,var(--nevoa) 0%,#E9EEF0 50%,#DCE4E8 100%)}
-.contato-faixa__form{
-  border-radius:6px;padding:40px;
-  box-shadow:0 1px 2px rgba(31,44,51,.06),0 12px 28px -8px rgba(31,44,51,.12),0 40px 80px -24px rgba(31,44,51,.18)
+/* ---------- Tablet ---------- */
+@media (max-width:1024px){
+  .item__corpo{grid-template-columns:1fr 1fr}
+  .item__mandar{grid-column:1 / -1}
+  .faixa__texto{grid-column:6 / span 7!important}
+  .papeleta{grid-column:6 / span 7}
+  .roteiro__cabeca{grid-column:1 / span 5}
+  .equipe__mosaico > .equipe__foto{grid-column:1 / -1}
+  .equipe__lado{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:end}
+  .papeleta dl div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline}
+  .papeleta dl div::after{display:none}
+  .papeleta dt{max-width:none}
+  .papeleta dd{text-align:right}
 }
 
-@media (max-width:980px){
-  .abertura{padding:168px 0 96px}
-  .abertura__topo{gap:28px;padding-bottom:56px}
-  .compromisso-faixa{padding:104px 0}
-  .etapas-faixa,.equipe-faixa,.contato-faixa{padding:96px 0}
-  .compromisso-faixa::after{width:360px;height:360px;right:-150px}
-}
+/* ---------- Celular: composição própria ---------- */
 @media (max-width:720px){
-  .abertura{padding:150px 0 72px}
-  .duvida summary{padding:24px 0 22px}
-  .abertura .duvida summary:hover{padding-left:0}
-  .compromisso-faixa{padding:80px 0}
-  .etapas-faixa,.equipe-faixa,.contato-faixa{padding:72px 0}
-  .contato-faixa__form{padding:24px}
+  .home{--xl:17vw;--margem:18px}
+  .home .topo__grade{padding-top:calc(76px + 8svh)!important;padding-bottom:22px!important}
+  .home .topo h1{line-height:.92!important}
+  .linha--dir{text-align:left}
+  .topo__base{flex-direction:column;align-items:stretch;gap:20px;padding-top:8svh}
+  .home .topo__frase{font-size:var(--corpo)}
+  .topo__acao{width:100%}
+  .situacoes{padding:96px 0 88px}
+  .situacoes__cabeca{grid-template-columns:1fr;gap:16px;margin-bottom:36px}
+  .home .situacoes__cabeca p{font-size:var(--corpo)}
+  .item summary{grid-template-columns:minmax(0,1fr) 18px;gap:10px;padding:20px 18px}
+  .item__area{grid-row:2;grid-column:1}
+  .item summary::after{grid-column:2;grid-row:1 / span 2}
+  .item summary:hover .item__pergunta{transform:none}
+  .item__corpo{grid-template-columns:1fr;padding:0 18px 26px;gap:20px}
+  .item__mandar{width:100%;justify-content:center}
+  .faixa{min-height:66svh}
+  .home .faixa__grade{padding-top:72px!important;padding-bottom:28px!important}
+  .home .faixa__texto{grid-column:1 / -1!important;grid-row:2!important;font-size:var(--corpo);max-width:none;margin-top:28px}
+  .home .faixa__frase{grid-row:1!important;padding-top:0!important}
+  .faixa__grade{grid-template-rows:auto auto!important}
+  .home .faixa__frase{font-size:13vw!important}
+  .roteiro{padding:96px 0}
+  .roteiro__cabeca,.papeleta{grid-column:1 / -1}
+  .papeleta{margin-top:36px;padding:28px 22px 56px;max-width:none}
+  .home .papeleta__total{margin:24px -22px 0;padding:0 22px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+  .papeleta dl div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline}
+  .papeleta dl div::after{display:none}
+  .papeleta dt{max-width:none}
+  .papeleta dd{text-align:right}
+  .equipe{padding:96px 0}
+  .equipe__cabeca{grid-template-columns:1fr;gap:16px;margin-bottom:36px}
+  .home .equipe__cabeca p{font-size:var(--corpo)}
+  .equipe__mosaico > .equipe__foto figcaption{position:static;width:auto;max-width:none;padding:16px 0 0;background:none}
+  .equipe__lado{grid-template-columns:1fr;gap:24px}
+  .home .contato__linha{min-height:84px;padding-bottom:18px;font-size:clamp(26px,8vw,40px)}
+  .so-largo{display:none}
+  .home .contato__linha--titulo{min-height:96px}
+  .contato__linha--acao{padding-top:20px;min-height:0}
+  .contato__linha--acao > .wrap{flex-direction:column;align-items:stretch}
+  .contato__linha--acao .btn{width:100%}
+  .fim__colunas{grid-template-columns:1fr 1fr;gap:32px 20px}
+  .home footer.fim{position:relative}
 }
+.home .contato__linha--acao,.home .contato__linha--acao > .wrap > span{color:var(--branco)}
+.home .contato__linha--info{color:var(--apoio)}

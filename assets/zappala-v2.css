@@ -91,11 +91,8 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
 .masthead :focus-visible{outline-color:var(--gelo)}
 .menu-toggle{display:none}
 @media (max-width:960px){
-  .masthead__inner{min-height:0;padding:10px 20px 0!important;flex-wrap:wrap;gap:10px 16px}
-  .masthead__right{display:contents}
-  .nav{order:3;width:100%;overflow-x:auto;gap:20px;padding-bottom:2px;scrollbar-width:none}
-  .nav::-webkit-scrollbar{display:none}
-  .nav a{font-size:15px!important;white-space:nowrap;padding:8px 0 10px}
+  .masthead__inner{min-height:64px;padding:10px 18px!important}
+  .nav{display:none}
   .brand img{width:150px}
   .masthead__cta{padding:10px 14px!important;font-size:15px!important}
 }

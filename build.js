@@ -24,7 +24,6 @@ const pages = [
 const practicePages = pages.slice(5);
 
 const nav = [
-  ['/', 'Início', 'index.html'],
   ['/#areas', 'Em que ajudamos', null],
   ['/#atendimento', 'Como funciona', null],
   ['/equipe.html', 'Equipe', 'equipe.html'],
