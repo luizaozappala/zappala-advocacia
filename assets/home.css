@@ -239,12 +239,13 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 }
 
 /* ---------- O símbolo como fundo (diagonal e triângulos), tom sobre tom ---------- */
-.topo::after{
+.conversa{position:relative;overflow:hidden;background:var(--grafite)}
+.conversa::after{
   content:"";position:absolute;pointer-events:none;z-index:0;
-  width:min(38vw,540px);aspect-ratio:1;right:0;top:calc(50% + 64px);transform:translateY(-50%);
-  background:url("/assets/simbolo-zappala-relevo.svg") no-repeat center/contain;
-  filter:drop-shadow(0 30px 50px rgba(5,10,14,.35));opacity:.55
+  width:min(150vw,2000px);aspect-ratio:1;left:58%;top:47%;transform:translate(-50%,-50%);
+  background:url("/assets/simbolo-sutil.svg") no-repeat center/contain
 }
+.situacoes .wrap{position:relative;z-index:1}
 .faixa{position:relative;overflow:hidden}
 .faixa::after{
   content:"";position:absolute;pointer-events:none;z-index:0;
@@ -260,10 +261,9 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
 }
 .home footer.fim > *{position:relative;z-index:1}
 @media (max-width:1024px){
-  .topo::after{width:52vw;right:-14vw;opacity:.35}
 }
 @media (max-width:720px){
-  .topo::after{width:78vw;right:-30vw;top:auto;bottom:-14%;transform:none;opacity:.22}
+  .conversa::after{width:260vw;left:50%;top:44%}
   .faixa::after{width:90vw;left:auto;right:-36vw;bottom:-18%}
   .home footer.fim::after{width:80vw;right:-30vw;bottom:-10%}
 }
