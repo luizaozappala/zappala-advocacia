@@ -69,7 +69,7 @@ h3{font-size:22px!important;letter-spacing:-.01em!important;margin:0}
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 .brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0;font-size:0!important}
-.brand img{display:block;width:212px;max-width:52vw;height:auto}
+.brand img{display:block;width:236px;max-width:56vw;height:auto}
 .brand em{display:none}
 .masthead__right{display:flex;align-items:center;gap:28px}
 .nav{display:flex;gap:24px}

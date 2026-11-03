@@ -17,209 +17,155 @@
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/zappala-v2.css">
+<link rel="stylesheet" href="assets/home.css">
 </head>
-<body>
+<body class="home">
 <header class="masthead"></header>
 
 <main>
-<section class="hero">
-  <div class="wrap hero__inner">
-    <h1>Advocacia para quem quer entender o próprio caso.</h1>
-    <p class="hero__sub">Trabalho, INSS, família, consumidor e trânsito. Atendimento em Belo Horizonte, com hora marcada, ou por vídeo em todo o Brasil. Quem conversa com você é quem cuida do seu caso.</p>
-    <div class="hero__actions">
-      <a class="btn" href="#contato">Falar com o escritório</a>
-      <a class="btn btn--ghost" href="#areas">Ver em que podemos ajudar</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="areas">
+<section class="abertura" aria-labelledby="titulo">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Em que podemos ajudar</h2>
-      <p>Você não precisa saber o nome jurídico do problema. Conte o que aconteceu, e a gente diz se há o que fazer e qual é o prazo.</p>
-    </div>
-
-    <div class="areas-grid">
-      <article class="area">
-        <h3>Trabalho</h3>
-        <p class="area__pergunta">“Fui demitido. O que tenho para receber?”</p>
-        <ul>
-          <li>Acerto e verbas rescisórias</li>
-          <li>Trabalho sem carteira assinada</li>
-          <li>Horas extras e adicionais</li>
-          <li>Trabalho doméstico e diarista</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <h3>INSS e aposentadoria</h3>
-        <p class="area__pergunta">“O INSS negou meu benefício. E agora?”</p>
-        <ul>
-          <li>Benefício negado ou cortado</li>
-          <li>Auxílio-doença e perícia</li>
-          <li>BPC/LOAS</li>
-          <li>Aposentadoria e pensão por morte</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <h3>Família</h3>
-        <p class="area__pergunta">“Ele parou de pagar a pensão.”</p>
-        <ul>
-          <li>Pensão alimentícia</li>
-          <li>Guarda e convivência</li>
-          <li>Divórcio e união estável</li>
-          <li>Inventário e partilha</li>
-        </ul>
-        <div class="area__links">
-          <a class="text-link" href="familia-sucessoes.html">Família e sucessões</a>
-          <a class="text-link" href="inventario-partilha.html">Inventário</a>
-        </div>
-      </article>
-
-      <article class="area">
-        <h3>Consumidor e bancos</h3>
-        <p class="area__pergunta">“Estão me cobrando uma dívida que não é minha.”</p>
-        <ul>
-          <li>Cobrança indevida e nome sujo</li>
-          <li>Golpe do Pix e fraude bancária</li>
-          <li>Compra que não chegou ou veio com defeito</li>
-          <li>Planos de saúde e companhias aéreas</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <h3>Trânsito</h3>
-        <p class="area__pergunta">“Recebi uma notificação de suspensão da CNH.”</p>
-        <ul>
-          <li>Defesa e recurso de multa</li>
-          <li>Suspensão e cassação da CNH</li>
-          <li>Multa que não é sua</li>
-          <li>Acidentes de trânsito</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <h3>Imóveis e contratos</h3>
-        <p class="area__pergunta">“Comprei, aluguei ou herdei um imóvel e deu problema.”</p>
-        <ul>
-          <li>Compra, venda e aluguel</li>
-          <li>Condomínio e vizinhança</li>
-          <li>Regularização e usucapião</li>
-          <li>Contratos e cobranças</li>
-        </ul>
-        <div class="area__links">
-          <a class="text-link" href="direito-imobiliario.html">Imóveis</a>
-          <a class="text-link" href="direito-civil-patrimonial.html">Contratos e cobranças</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="empresas">
-      <div>
-        <h3>Para quem tem empresa ou emprega</h3>
-        <p>Pequenos negócios, MEIs e quem tem empregada doméstica.</p>
+    <div class="abertura__topo">
+      <h1 id="titulo">Advocacia para quem quer entender o próprio caso.</h1>
+      <div class="abertura__lado">
+        <p>Atendimento em Belo Horizonte, com hora marcada, ou por vídeo em todo o Brasil. Quem conversa com você é quem cuida do seu caso.</p>
+        <a class="btn" href="#contato">Falar com o escritório</a>
       </div>
-      <ul>
-        <li>Contratar e demitir do jeito certo</li>
-        <li>Empregador doméstico</li>
-        <li>Contratos com clientes e fornecedores</li>
-        <li>Cobrança de clientes</li>
-        <li>Autuações e cobranças de impostos</li>
-        <li>Defesa em ação trabalhista</li>
-      </ul>
+    </div>
+
+    <div class="duvidas" id="areas">
+      <p class="duvidas__intro">Você não precisa saber o nome jurídico do problema. Comece pela sua situação.</p>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">Fui demitido. O que tenho para receber?</span><span class="duvida__area">Trabalho</span></summary>
+        <div class="duvida__corpo">
+          <p>Depende de como foi a saída e de como era o contrato. Ajudamos com:</p>
+          <ul><li>acerto e verbas rescisórias</li><li>trabalho sem carteira assinada</li><li>horas extras e adicionais</li><li>trabalho doméstico e diarista</li></ul>
+        </div>
+      </details>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">O INSS negou meu benefício. E agora?</span><span class="duvida__area">INSS e aposentadoria</span></summary>
+        <div class="duvida__corpo">
+          <p>A negativa do INSS não é a palavra final, mas há prazo para recorrer. Ajudamos com:</p>
+          <ul><li>benefício negado ou cortado</li><li>auxílio-doença e perícia</li><li>BPC/LOAS</li><li>aposentadoria e pensão por morte</li></ul>
+        </div>
+      </details>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">Ele parou de pagar a pensão.</span><span class="duvida__area">Família</span></summary>
+        <div class="duvida__corpo">
+          <p>Questões de família pedem firmeza no direito e cuidado no trato. Ajudamos com:</p>
+          <ul><li>pensão alimentícia</li><li>guarda e convivência</li><li>divórcio e união estável</li><li>inventário e partilha</li></ul>
+          <p class="duvida__links"><a class="text-link" href="familia-sucessoes.html">Família e sucessões</a> <a class="text-link" href="inventario-partilha.html">Inventário</a></p>
+        </div>
+      </details>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">Estão me cobrando uma dívida que não é minha.</span><span class="duvida__area">Consumidor e bancos</span></summary>
+        <div class="duvida__corpo">
+          <p>Antes de gastar energia, vale saber se o caso tem base. Ajudamos com:</p>
+          <ul><li>cobrança indevida e nome sujo</li><li>golpe do Pix e fraude bancária</li><li>compra que não chegou ou veio com defeito</li><li>planos de saúde e companhias aéreas</li></ul>
+        </div>
+      </details>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">Recebi uma notificação de suspensão da CNH.</span><span class="duvida__area">Trânsito</span></summary>
+        <div class="duvida__corpo">
+          <p>O prazo de defesa é curto. Não deixe a notificação na gaveta. Ajudamos com:</p>
+          <ul><li>defesa e recurso de multa</li><li>suspensão e cassação da CNH</li><li>multa que não é sua</li><li>acidentes de trânsito</li></ul>
+        </div>
+      </details>
+
+      <details class="duvida">
+        <summary><span class="duvida__pergunta">Comprei, aluguei ou herdei um imóvel e deu problema.</span><span class="duvida__area">Imóveis e contratos</span></summary>
+        <div class="duvida__corpo">
+          <p>A resposta depende do contrato, dos documentos e da situação do imóvel. Ajudamos com:</p>
+          <ul><li>compra, venda e aluguel</li><li>condomínio e vizinhança</li><li>regularização e usucapião</li><li>contratos e cobranças</li></ul>
+          <p class="duvida__links"><a class="text-link" href="direito-imobiliario.html">Imóveis</a> <a class="text-link" href="direito-civil-patrimonial.html">Contratos e cobranças</a></p>
+        </div>
+      </details>
+
+      <details class="duvida duvida--empresa">
+        <summary><span class="duvida__pergunta">Tenho uma empresa ou uma empregada doméstica.</span><span class="duvida__area">Para quem emprega</span></summary>
+        <div class="duvida__corpo">
+          <p>Para pequenos negócios, MEIs e empregadores domésticos. Ajudamos com:</p>
+          <ul><li>contratar e demitir do jeito certo</li><li>contratos com clientes e fornecedores</li><li>cobrança de clientes</li><li>autuações e cobranças de impostos</li><li>defesa em ação trabalhista</li></ul>
+        </div>
+      </details>
+
+      <p class="duvidas__fim">Sua situação não está aqui? <a href="#contato">Conte para a gente</a>. Só não atuamos na área criminal.</p>
     </div>
   </div>
 </section>
 
-<section class="section section--nevoa" id="retorno">
-  <div class="wrap compromisso">
-    <div>
-      <h2>Você não fica sem resposta</h2>
-      <p class="compromisso__destaque">Todo mês você recebe uma atualização sobre o seu caso, mesmo quando o processo não andou. Se surgir novidade antes, você fica sabendo antes.</p>
-    </div>
-    <ul class="compromisso__lista">
-      <li><strong>Você fala com quem conduz o caso</strong><span>Sem central de atendimento e sem passar de mão em mão.</span></li>
-      <li><strong>Tudo por escrito antes de assinar</strong><span>O que vai ser feito, até onde vai o trabalho e os honorários. Você decide com calma.</span></li>
-      <li><strong>Resposta honesta sobre o seu caso</strong><span>Se não valer a pena entrar na Justiça, a gente diz. E explica por quê.</span></li>
-      <li><strong>Em português claro</strong><span>Cada termo técnico explicado, quantas vezes for preciso.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section dark on-dark" id="atendimento">
+<section class="compromisso-faixa" id="retorno" aria-labelledby="titulo-retorno">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Como funciona o atendimento</h2>
-      <p>Do primeiro contato ao acompanhamento do caso, em cinco passos.</p>
-    </div>
-    <ol class="etapas">
-      <li><div><h3>Você conta o que aconteceu</h3><p>Mande uma mensagem pelo WhatsApp com poucas linhas sobre a situação e diga se recebeu algum prazo. Não precisa enviar documentos agora.</p></div></li>
-      <li><div><h3>A gente confere se pode atender</h3><p>Antes de entrar no seu caso, verificamos se o escritório não atende a outra parte. É uma regra de ética da advocacia, e protege você.</p></div></li>
-      <li><div><h3>Conversa sobre o seu caso</h3><p>Presencial em Belo Horizonte, com hora marcada, ou por vídeo. Olhamos os documentos e explicamos o que dá para fazer, quanto tempo costuma levar e quando não vale a pena.</p></div></li>
-      <li><div><h3>Proposta por escrito</h3><p>Você recebe por escrito o que será feito, os limites do trabalho e os honorários. Só assina se estiver de acordo.</p></div></li>
-      <li><div><h3>Acompanhamento todo mês</h3><p>Começamos o trabalho e você recebe uma atualização por mês, com os próximos passos e os prazos que importam.</p></div></li>
+    <h2 id="titulo-retorno">Todo mês, você recebe notícias do seu caso.</h2>
+    <p class="compromisso-faixa__sub">Mesmo quando o processo não andou. Se surgir novidade antes, você fica sabendo antes.</p>
+    <dl class="garantias">
+      <div><dt>Você fala com quem conduz o caso</dt><dd>Sem central de atendimento e sem passar de mão em mão.</dd></div>
+      <div><dt>Tudo por escrito antes de assinar</dt><dd>O que vai ser feito, até onde vai o trabalho e os honorários.</dd></div>
+      <div><dt>Resposta honesta</dt><dd>Se não valer a pena entrar na Justiça, a gente diz e explica por quê.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="etapas-faixa" id="atendimento" aria-labelledby="titulo-etapas">
+  <div class="wrap">
+    <h2 id="titulo-etapas">Como funciona</h2>
+    <ol class="passos">
+      <li><h3>Você conta o que aconteceu</h3><p>Poucas linhas pelo WhatsApp e se recebeu algum prazo. Sem documentos por enquanto.</p></li>
+      <li><h3>Conferimos se podemos atender</h3><p>Verificamos se o escritório não atende a outra parte. É regra de ética, e protege você.</p></li>
+      <li><h3>Conversa sobre o caso</h3><p>Em BH, com hora marcada, ou por vídeo. Explicamos o que dá para fazer e quando não vale a pena.</p></li>
+      <li><h3>Proposta por escrito</h3><p>O que será feito, os limites do trabalho e os honorários. Você só assina se concordar.</p></li>
+      <li><h3>Notícias todo mês</h3><p>Começamos o trabalho e você recebe uma atualização por mês.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="section section--nevoa" id="equipe">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Quem atende você</h2>
-      <p>Um escritório pequeno e familiar, conduzido pelas próprias profissionais.</p>
+<section class="equipe-faixa" id="equipe" aria-labelledby="titulo-equipe">
+  <div class="wrap equipe-faixa__grid">
+    <div>
+      <h2 id="titulo-equipe">Quem atende você</h2>
+      <p class="equipe-faixa__texto">Um escritório pequeno e familiar. Quem conversa com você na primeira vez acompanha o caso até o fim.</p>
+      <p><a class="text-link" href="equipe.html">Formação da equipe</a></p>
     </div>
-    <div class="equipe-grid">
-      <article class="pessoa">
-        <img src="assets/gleice-zappala.webp" alt="Retrato de Gleice Zappalá" width="140" height="175" loading="lazy">
-        <div>
-          <h3>Gleice Zappalá</h3>
-          <p class="pessoa__cargo">Advogada responsável, OAB/MG 145.047</p>
-          <p>Conduz os casos do escritório, da primeira conversa ao fim do processo.</p>
-        </div>
-      </article>
-      <article class="pessoa">
-        <img src="assets/luiza-zappala.webp" alt="Retrato de Luíza Zappalá" width="140" height="175" loading="lazy">
-        <div>
-          <h3>Luíza Zappalá</h3>
-          <p class="pessoa__cargo">Assistente jurídica</p>
-          <p>Especialista em Direito Processual Civil pela FGV. Medalha de ouro na Olimpíada Brasileira de Direito Civil.</p>
-        </div>
-      </article>
-    </div>
-    <p class="equipe-mais"><a class="text-link" href="equipe.html">Conhecer a formação da equipe</a></p>
+    <figure class="retrato">
+      <img src="assets/gleice-zappala.webp" alt="Retrato de Gleice Zappalá" width="440" height="587" loading="lazy">
+      <figcaption><strong>Gleice Zappalá</strong>Advogada responsável, OAB/MG 145.047</figcaption>
+    </figure>
+    <figure class="retrato">
+      <img src="assets/luiza-zappala.webp" alt="Retrato de Luíza Zappalá" width="440" height="550" loading="lazy">
+      <figcaption><strong>Luíza Zappalá</strong>Assistente jurídica, especialista em Processo Civil pela FGV</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="section" id="contato">
-  <div class="wrap contato">
+<section class="contato-faixa" id="contato" aria-labelledby="titulo-contato">
+  <div class="wrap contato-faixa__grid">
     <div>
-      <h2>Fale com o escritório</h2>
-      <p class="lede">Conte em poucas linhas o que aconteceu. A conversa começa pelo WhatsApp.</p>
-      <p class="contato__outros">WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br>E-mail <a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
+      <h2 id="titulo-contato">Falar com o escritório</h2>
+      <p class="contato-faixa__texto">Conte em poucas linhas o que aconteceu e se existe algum prazo correndo. Não precisa mandar documentos agora.</p>
+      <p class="contato-faixa__canais">WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br>E-mail <a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
     </div>
-    <div>
-      <p class="aviso"><strong>Na primeira mensagem, não envie documentos nem dados sensíveis.</strong> Basta dizer do que se trata e se existe algum prazo correndo. Mandar mensagem ainda não significa contratar o escritório.</p>
-      <div class="campo">
-        <label for="assunto">Sobre o que você quer falar?</label>
-        <select id="assunto">
-          <option value="">Escolha uma opção</option>
-          <option>Trabalho</option>
-          <option>INSS ou aposentadoria</option>
-          <option>Família ou pensão</option>
-          <option>Consumidor, banco ou golpe</option>
-          <option>Trânsito ou CNH</option>
-          <option>Imóvel ou contrato</option>
-          <option>Empresa ou empregada doméstica</option>
-          <option>Não sei dizer</option>
-        </select>
-        <span class="dica">Na dúvida, escolha “Não sei dizer”. A gente identifica para você.</span>
-      </div>
-      <div class="contato__acoes">
-        <a class="btn" id="wpp" href="https://wa.me/5531992377158" target="_blank" rel="noopener">Abrir conversa no WhatsApp</a>
-        <span class="status" id="status" role="status"></span>
-      </div>
+    <div class="contato-faixa__form">
+      <label for="assunto">Sobre o que você quer falar?</label>
+      <select id="assunto">
+        <option value="">Escolha uma opção</option>
+        <option>Trabalho</option>
+        <option>INSS ou aposentadoria</option>
+        <option>Família ou pensão</option>
+        <option>Consumidor, banco ou golpe</option>
+        <option>Trânsito ou CNH</option>
+        <option>Imóvel ou contrato</option>
+        <option>Empresa ou empregada doméstica</option>
+        <option>Não sei dizer</option>
+      </select>
+      <p class="dica">Na dúvida, escolha “Não sei dizer”.</p>
+      <a class="btn" id="wpp" href="https://wa.me/5531992377158" target="_blank" rel="noopener">Falar com o escritório pelo WhatsApp</a>
+      <p class="status" id="status" role="status"></p>
+      <p class="nota">Mandar mensagem ainda não significa contratar o escritório. Evite enviar dados sensíveis na primeira conversa.</p>
     </div>
   </div>
 </section>
