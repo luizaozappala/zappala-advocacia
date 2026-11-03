@@ -16,8 +16,10 @@ const pages = [
   'familia-sucessoes.html',
   'inventario-partilha.html'
 ];
+const publishedPosts = JSON.parse(fs.readFileSync(path.join(dist, 'data', 'informativos.json'), 'utf8'));
 let checked = 0;
 for (const page of pages) {
+  if (page === 'publicacao.html' && publishedPosts.length === 0) continue;
   const filename = path.join(dist, page);
   assert.ok(fs.existsSync(filename), `Missing built page: ${page}`);
   const html = fs.readFileSync(filename, 'utf8');
