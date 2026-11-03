@@ -237,3 +237,33 @@ a.contato__linha:hover > .wrap{transform:translateX(10px)}
   .js .topo h1{animation:aparece 700ms var(--ease) 80ms both}
   .home .papeleta__total{flex-direction:column;align-items:flex-start;gap:2px;line-height:1.4;padding-top:14px;padding-bottom:14px}
 }
+
+/* ---------- O símbolo como fundo (diagonal e triângulos), tom sobre tom ---------- */
+.topo::after{
+  content:"";position:absolute;pointer-events:none;z-index:0;
+  width:min(38vw,540px);aspect-ratio:1;right:0;top:calc(50% + 64px);transform:translateY(-50%);
+  background:url("/assets/simbolo-zappala-relevo.svg") no-repeat center/contain;
+  filter:drop-shadow(0 30px 50px rgba(5,10,14,.35));opacity:.55
+}
+.faixa{position:relative;overflow:hidden}
+.faixa::after{
+  content:"";position:absolute;pointer-events:none;z-index:0;
+  width:min(52vw,720px);aspect-ratio:1;left:38%;bottom:-22%;
+  background:url("/assets/simbolo-tom-pedra.svg") no-repeat center/contain
+}
+.faixa__grade{position:relative;z-index:1}
+.home footer.fim{overflow:hidden}
+.home footer.fim::after{
+  content:"";position:absolute;pointer-events:none;z-index:0;
+  width:min(40vw,560px);aspect-ratio:1;right:-4vw;bottom:-18%;
+  background:url("/assets/simbolo-tom-grafite.svg") no-repeat center/contain
+}
+.home footer.fim > *{position:relative;z-index:1}
+@media (max-width:1024px){
+  .topo::after{width:52vw;right:-14vw;opacity:.35}
+}
+@media (max-width:720px){
+  .topo::after{width:78vw;right:-30vw;top:auto;bottom:-14%;transform:none;opacity:.22}
+  .faixa::after{width:90vw;left:auto;right:-36vw;bottom:-18%}
+  .home footer.fim::after{width:80vw;right:-30vw;bottom:-10%}
+}
