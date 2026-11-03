@@ -37,8 +37,10 @@ function header(page) {
   return `<header class="masthead"><div class="masthead__inner">` +
     `<a class="brand" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="236" height="73"></a>` +
     `<div class="masthead__right"><nav class="nav" aria-label="Navegação principal">${links}</nav>` +
-    `<a class="masthead__cta" href="/#contato">Falar com o escritório</a></div></div></header>` +
-    `<script>(function(){var h=document.querySelector('.masthead');function f(){h.classList.toggle('is-solid',window.scrollY>24)}f();window.addEventListener('scroll',f,{passive:true})})();</script>`;
+    `<button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-navigation">Menu</button>` +
+    `<a class="masthead__cta" href="/#contato">Falar com o escritório</a></div></div>` +
+    `<nav class="mobile-nav" id="mobile-navigation" aria-label="Navegação para celular" hidden>${links}<a class="mobile-nav__cta" href="/#contato">Falar com o escritório</a></nav></header>` +
+    `<script>(function(){var h=document.querySelector('.masthead');var button=h.querySelector('.menu-toggle');var menu=h.querySelector('#mobile-navigation');function solid(){h.classList.toggle('is-solid',window.scrollY>24||!menu.hidden)}function close(){menu.hidden=true;button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Abrir menu');solid()}button.addEventListener('click',function(){if(menu.hidden){menu.hidden=false;button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Fechar menu');solid()}else{close()}});menu.addEventListener('click',function(e){if(e.target.closest('a'))close()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!menu.hidden){close();button.focus()}});document.addEventListener('click',function(e){if(!menu.hidden&&!h.contains(e.target))close()});window.addEventListener('resize',function(){if(window.innerWidth>1080&&!menu.hidden)close()});solid();window.addEventListener('scroll',solid,{passive:true});})();</script>`;
 }
 
 const footer = `<footer><div class="wrap">
@@ -83,6 +85,10 @@ function transform(page, html) {
   if (!html.includes('rel="icon"')) {
     html = html.replace('</head>', '<link rel="icon" href="/assets/simbolo-zappala.svg" type="image/svg+xml">\n</head>');
   }
+  // Atalho para leitores de tela/teclado em todas as páginas.
+  html = html.replace(/<body([^>]*)>/i, '<body$1><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>');
+  html = html.replace(/<main\b(?![^>]*\bid\s*=)/i, '<main id="conteudo"');
+  html = html.replace(/<main\b(?![^>]*\btabindex\s*=)/i, '<main tabindex="-1"');
   html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
   html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
   // página individual de publicação usa um cabeçalho próprio (.mast)
