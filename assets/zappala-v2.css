@@ -198,7 +198,7 @@ footer p{font-size:16px!important;line-height:1.6!important;margin:0}
 
 .profile-card{display:grid!important;grid-template-columns:240px minmax(0,1fr)!important;gap:36px!important;padding:36px 0!important;border-top:1px solid var(--linha)!important;background:none!important}
 .profile-card__photo{width:240px!important;height:auto!important;filter:none!important}
-.profile-card h3{font-size:28px!important;margin:4px 0 14px!important}
+.profile-card h2,.profile-card h3{font-size:28px!important;margin:4px 0 14px!important}
 .profile-card p{font-size:18px!important;color:var(--grafite)!important}
 .profile-card__contact{color:var(--apoio)!important;font-size:16px!important;margin-top:14px!important}
 @media (max-width:700px){.profile-card{grid-template-columns:1fr!important}.profile-card__photo{width:200px!important}}

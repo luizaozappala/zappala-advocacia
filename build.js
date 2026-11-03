@@ -9,6 +9,15 @@ const dist = path.join(root, 'dist');
 const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
 const baseUrl = 'https://zappala.adv.br';
+const localAddress = Object.freeze({
+  '@type': 'PostalAddress',
+  streetAddress: 'Rua Maquiné, 261',
+  addressLocality: 'Belo Horizonte',
+  addressRegion: 'MG',
+  addressCountry: 'BR'
+});
+const localBusinessId = `${baseUrl}/#escritorio`;
+
 const canonicalPath = (filename) => filename === 'index.html' ? '/' : '/' + filename.replace(/\.html$/, '');
 const canonicalUrl = (filename) => baseUrl + canonicalPath(filename);
 
@@ -50,8 +59,9 @@ const footer = `<footer><div class="wrap">
 <div class="foot-grid">
 <div><a class="foot-logo" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="200" height="62"></a>
 <p class="foot-assinatura">Uma advocacia que começa pela atenção aos detalhes.</p></div>
-<div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
-<p style="margin-top:14px">Presencial em Belo Horizonte/MG, com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
+<div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br>Ligações <a href="tel:+5531992377158">(31) 99237-7158</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
+<p class="foot-address" style="margin-top:14px">Endereço para atendimento agendado:<br>Rua Maquiné, 261 — Belo Horizonte/MG<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Maquin%C3%A9%2C%20261%2C%20Belo%20Horizonte%2C%20MG">Consultar endereço no mapa</a></p>
+<p style="margin-top:14px">Atendimento presencial somente com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
 <div><h4>Navegação</h4><p><a href="/#areas">Em que ajudamos</a><br><a href="/#retorno">Acompanhamento do caso</a><br><a href="/#atendimento">Como funciona</a><br><a href="/equipe.html">Equipe</a><br><a href="/informativos.html">Informativos</a></p></div>
 </div>
 <div class="foot-legal">Gleice Zappalá, advogada inscrita na OAB/MG sob o nº 145.047. Zappalá Advocacia &amp; Consultoria.<br><br>Conteúdo informativo, de acordo com o Código de Ética e Disciplina da OAB e o Provimento CFOAB nº 205/2021. As informações deste site não são promessa de resultado e não substituem a análise do seu caso.<br><br>As informações que você enviar por WhatsApp ou e-mail são usadas para verificar disponibilidade, conflito de interesses e uma eventual contratação, de acordo com a Lei Geral de Proteção de Dados.</div>
@@ -67,7 +77,8 @@ const legalService = {
   email: 'luiza.zappala.adv@gmail.com',
   sameAs: ['https://www.instagram.com/zappala.adv/'],
   areaServed: [{ '@type': 'City', name: 'Belo Horizonte' }, { '@type': 'Country', name: 'Brasil' }],
-  address: { '@type': 'PostalAddress', addressLocality: 'Belo Horizonte', addressRegion: 'MG', addressCountry: 'BR' },
+  '@id': localBusinessId,
+  address: localAddress,
   knowsAbout: [
     'Direito do Trabalho', 'Direito Previdenciário', 'Direito de Família', 'Direito das Sucessões',
     'Direito do Consumidor', 'Direito de Trânsito', 'Direito Civil', 'Direito Imobiliário', 'Direito Tributário'
@@ -106,6 +117,24 @@ function transform(page, html) {
   }
   html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
   html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
+  // All published service pages describe the same office, not separate branches.
+  // Reconcile JSON-LD NAP with visible contact information on every page.
+  html = html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (match, raw) => {
+    try {
+      const node = JSON.parse(raw);
+      if (node['@type'] === 'LegalService') {
+        node['@id'] = localBusinessId;
+        node.name = 'Zappalá Advocacia & Consultoria';
+        node.address = localAddress;
+        node.telephone = '+55-31-99237-7158';
+        return '<script type="application/ld+json">' + JSON.stringify(node) + '</script>';
+      }
+    } catch (error) {
+      console.warn('JSON-LD original mantido: ' + error.message);
+    }
+    return match;
+  });
+
   // Avoid sending visitors and crawlers through Cloudflare's .html redirects.
   html = html.replace(/href="(?:\.\/|\/)?index\.html(#[^"]*)?"/g, (_m, hash = '') => 'href="/' + hash + '"');
   html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha)\.html(#[^"]*)?"/g,
