@@ -97,8 +97,8 @@ function transform(page, html) {
   // sitemap and internal links aligned with the final URL.
   if (page !== '404.html' && page !== 'publicacao.html') {
     const url = canonicalUrl(page);
-    if (/<link\s+rel="canonical"\s+href="[^"]*"\s*\/>?/i.test(html)) {
-      html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/>?/i, '<link rel="canonical" href="' + url + '">');
+    if (/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i.test(html)) {
+      html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, '<link rel="canonical" href="' + url + '">');
     } else {
       html = html.replace('</head>', '<link rel="canonical" href="' + url + '">\n</head>');
     }
@@ -173,7 +173,7 @@ fs.writeFileSync(path.join(dist, 'data', 'informativos.json'), JSON.stringify(po
 if (posts.length === 0) {
   const listing = path.join(dist, 'informativos.html');
   let listingHtml = fs.readFileSync(listing, 'utf8');
-  listingHtml = listingHtml.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/>?/i,
+  listingHtml = listingHtml.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/i,
     '<meta name="robots" content="noindex,follow">');
   fs.writeFileSync(listing, listingHtml);
   fs.rmSync(path.join(dist, 'publicacao.html'), { force: true });
