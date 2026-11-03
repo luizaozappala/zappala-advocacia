@@ -9,6 +9,9 @@ const dist = path.join(root, 'dist');
 const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
 const baseUrl = 'https://zappala.adv.br';
+const canonicalPath = (filename) => filename === 'index.html' ? '/' : '/' + filename.replace(/\.html$/, '');
+const canonicalUrl = (filename) => baseUrl + canonicalPath(filename);
+
 
 const pages = [
   'index.html',
@@ -89,6 +92,23 @@ function transform(page, html) {
   html = html.replace(/<body([^>]*)>/i, '<body$1><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>');
   html = html.replace(/<main\b(?![^>]*\bid\s*=)/i, '<main id="conteudo"');
   html = html.replace(/<main\b(?![^>]*\btabindex\s*=)/i, '<main tabindex="-1"');
+
+  // Cloudflare Workers serves file.html at /file; keep the canonical,
+  // sitemap and internal links aligned with the final URL.
+  if (page !== '404.html' && page !== 'publicacao.html') {
+    const url = canonicalUrl(page);
+    if (/<link\s+rel="canonical"\s+href="[^"]*"\s*\/>?/i.test(html)) {
+      html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/>?/i, '<link rel="canonical" href="' + url + '">');
+    } else {
+      html = html.replace('</head>', '<link rel="canonical" href="' + url + '">\n</head>');
+    }
+    html = html.replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/i, '$1' + url + '$2');
+  }
+  // Avoid sending visitors and crawlers through Cloudflare's .html redirects.
+  html = html.replace(/href="(?:\.\/|\/)?index\.html(#[^"]*)?"/g, (_m, hash = '') => 'href="/' + hash + '"');
+  html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha)\.html(#[^"]*)?"/g,
+    (_m, route, hash = '') => 'href="/' + route + hash + '"');
+  html = html.replace(/publicacao\.html\?slug=/g, '/publicacao?slug=');
   html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
   html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
   // página individual de publicação usa um cabeçalho próprio (.mast)
@@ -147,12 +167,24 @@ posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 fs.mkdirSync(path.join(dist, 'data'), { recursive: true });
 fs.writeFileSync(path.join(dist, 'data', 'informativos.json'), JSON.stringify(posts, null, 2));
 
+// Do not index an empty editorial collection or a soft-404 article template.
+// When the CMS publishes its first post, the files become public as before;
+// proper server-rendered article pages remain a separate SEO follow-up.
+if (posts.length === 0) {
+  const listing = path.join(dist, 'informativos.html');
+  let listingHtml = fs.readFileSync(listing, 'utf8');
+  listingHtml = listingHtml.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/>?/i,
+    '<meta name="robots" content="noindex,follow">');
+  fs.writeFileSync(listing, listingHtml);
+  fs.rmSync(path.join(dist, 'publicacao.html'), { force: true });
+}
+
 const urls = [
-  `${baseUrl}/`,
-  `${baseUrl}/equipe.html`,
-  `${baseUrl}/informativos.html`,
-  ...practicePages.map((page) => `${baseUrl}/${page}`),
-  ...posts.map((post) => `${baseUrl}/publicacao.html?slug=${encodeURIComponent(post.slug)}`)
+  canonicalUrl('index.html'),
+  canonicalUrl('equipe.html'),
+  ...(posts.length ? [canonicalUrl('informativos.html')] : []),
+  ...practicePages.map(canonicalUrl),
+  ...posts.map((post) => `${baseUrl}/publicacao?slug=${encodeURIComponent(post.slug)}`)
 ];
 fs.writeFileSync(
   path.join(dist, 'sitemap.xml'),
