@@ -1,156 +1,128 @@
+// Build do site zappala.adv.br (Cloudflare Workers, pasta dist/).
+// Copia as páginas, aplica cabeçalho e rodapé únicos da identidade v2,
+// gera o índice dos informativos e o sitemap.
 const fs = require('fs');
 const path = require('path');
-const zlib = require('zlib');
 
 const root = __dirname;
 const dist = path.join(root, 'dist');
 const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
+const baseUrl = 'https://zappala.adv.br';
 
-const practicePages = [
-  'direito-civil-patrimonial-belo-horizonte.html',
-  'direito-imobiliario-belo-horizonte.html',
-  'familia-sucessoes-belo-horizonte.html',
-  'inventario-belo-horizonte.html'
+const pages = [
+  'index.html',
+  'equipe.html',
+  'informativos.html',
+  'publicacao.html',
+  '404.html',
+  'direito-civil-patrimonial.html',
+  'direito-imobiliario.html',
+  'familia-sucessoes.html',
+  'inventario-partilha.html'
 ];
+const practicePages = pages.slice(5);
+
+const nav = [
+  ['/', 'Início', 'index.html'],
+  ['/#areas', 'Em que ajudamos', null],
+  ['/#atendimento', 'Como funciona', null],
+  ['/equipe.html', 'Equipe', 'equipe.html'],
+  ['/informativos.html', 'Informativos', 'informativos.html']
+];
+
+function header(page) {
+  const links = nav
+    .map(([href, label, owner]) => `<a href="${href}"${owner === page ? ' class="is-current" aria-current="page"' : ''}>${label}</a>`)
+    .join('');
+  return `<header class="masthead"><div class="masthead__inner">` +
+    `<a class="brand" href="/"><img src="/assets/logo-zappala.svg" alt="Zappalá advocacia &amp; consultoria" width="190" height="58"></a>` +
+    `<div class="masthead__right"><nav class="nav" aria-label="Navegação principal">${links}</nav>` +
+    `<a class="masthead__cta" href="/#contato">Falar com o escritório</a></div></div></header>`;
+}
+
+const footer = `<footer><div class="wrap">
+<div class="foot-grid">
+<div><a class="foot-logo" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="200" height="62"></a>
+<p class="foot-assinatura">Uma advocacia que começa pela atenção aos detalhes.</p></div>
+<div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531989553592">(31) 98955-3592</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
+<p style="margin-top:14px">Presencial em Belo Horizonte/MG, com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
+<div><h4>Navegação</h4><p><a href="/#areas">Em que ajudamos</a><br><a href="/#retorno">Acompanhamento do caso</a><br><a href="/#atendimento">Como funciona</a><br><a href="/equipe.html">Equipe</a><br><a href="/informativos.html">Informativos</a></p></div>
+</div>
+<div class="foot-legal">Gleice Zappalá, advogada inscrita na OAB/MG sob o nº 145.047. Zappalá Advocacia &amp; Consultoria. Não atuamos na área criminal.<br><br>Conteúdo informativo, de acordo com o Código de Ética e Disciplina da OAB e o Provimento CFOAB nº 205/2021. As informações deste site não são promessa de resultado e não substituem a análise do seu caso.<br><br>As informações que você enviar por WhatsApp ou e-mail são usadas para verificar disponibilidade, conflito de interesses e uma eventual contratação, de acordo com a Lei Geral de Proteção de Dados.</div>
+</div></footer>`;
+
+const legalService = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: 'Zappalá Advocacia & Consultoria',
+  url: `${baseUrl}/`,
+  logo: `${baseUrl}/assets/logo-zappala.svg`,
+  telephone: '+55-31-98955-3592',
+  email: 'luiza.zappala.adv@gmail.com',
+  sameAs: ['https://www.instagram.com/zappala.adv/'],
+  areaServed: [{ '@type': 'City', name: 'Belo Horizonte' }, { '@type': 'Country', name: 'Brasil' }],
+  address: { '@type': 'PostalAddress', addressLocality: 'Belo Horizonte', addressRegion: 'MG', addressCountry: 'BR' },
+  knowsAbout: [
+    'Direito do Trabalho', 'Direito Previdenciário', 'Direito de Família', 'Direito das Sucessões',
+    'Direito do Consumidor', 'Direito de Trânsito', 'Direito Civil', 'Direito Imobiliário', 'Direito Tributário'
+  ]
+};
+
+const oldStyles = /<link[^>]+href="(?:\/)?assets\/(?:site-atmosphere|brand-header|team-section|practice-page|site-motion)\.css"[^>]*>\s*/g;
+const googleFonts = /<link[^>]+(?:fonts\.googleapis\.com|fonts\.gstatic\.com)[^>]*>\s*/g;
+const oldScripts = /<script[^>]+src="(?:\/)?assets\/site-motion\.js"[^>]*><\/script>\s*/g;
+
+function transform(page, html) {
+  html = html.replace(googleFonts, '').replace(oldStyles, '').replace(oldScripts, '');
+  if (!html.includes('zappala-v2.css')) {
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/zappala-v2.css">\n</head>');
+  } else {
+    html = html.replace('href="assets/zappala-v2.css"', 'href="/assets/zappala-v2.css"');
+  }
+  if (!html.includes('rel="icon"')) {
+    html = html.replace('</head>', '<link rel="icon" href="/assets/simbolo-zappala.svg" type="image/svg+xml">\n</head>');
+  }
+  html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
+  html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
+  // página individual de publicação usa um cabeçalho próprio (.mast)
+  html = html.replace(/(<a\b[^>]*class="[^"]*\bbrand\b[^"]*"[^>]*>)(?!<img)[\s\S]*?(<\/a>)/g,
+    '$1<img src="/assets/logo-zappala.svg" alt="Zappalá advocacia &amp; consultoria" width="170" height="52">$2');
+  // trechos antigos com tom de "núcleo jurídico" nas páginas de área
+  html = html
+    .replaceAll('<p>Atuação jurídica para pessoas, famílias e empresas.</p>', '<p>Advocacia para pessoas, famílias e pequenas empresas.</p>')
+    .replaceAll('index.html#areas', '/#areas')
+    .replaceAll('index.html#contato', '/#contato')
+    .replaceAll('index.html#atendimento', '/#atendimento');
+  if (page === 'index.html') {
+    const ld = `<script type="application/ld+json">${JSON.stringify(legalService)}</script>`;
+    html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
+    html = html.replace('</head>', `${ld}\n</head>`);
+  }
+  return html;
+}
 
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
-function materializeHtml(name) {
-  const direct = path.join(root, name);
-  const packed = path.join(sourceDir, `${name}.gz.b64`);
-  const target = path.join(dist, name);
-  if (fs.existsSync(direct)) {
-    fs.copyFileSync(direct, target);
-    return;
-  }
-  if (!fs.existsSync(packed)) throw new Error(`Arquivo-fonte ausente: ${name}`);
-  const compressed = Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64');
-  fs.writeFileSync(target, zlib.gunzipSync(compressed));
+for (const page of pages) {
+  const src = path.join(root, page);
+  if (!fs.existsSync(src)) throw new Error(`Página ausente: ${page}`);
+  fs.writeFileSync(path.join(dist, page), transform(page, fs.readFileSync(src, 'utf8')));
 }
-
-function materializeBinary(targetName) {
-  const packed = path.join(sourceDir, `${path.basename(targetName)}.b64`);
-  const target = path.join(dist, targetName);
-  if (!fs.existsSync(packed)) throw new Error(`Asset-fonte ausente: ${path.basename(targetName)}`);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64'));
-}
-
-function injectStylesheet(htmlName, href) {
-  const htmlPath = path.join(dist, htmlName);
-  if (!fs.existsSync(htmlPath)) return;
-  let html = fs.readFileSync(htmlPath, 'utf8');
-  const tag = `<link rel="stylesheet" href="${href}">`;
-  if (!html.includes(href)) html = html.replace('</head>', `${tag}\n</head>`);
-  fs.writeFileSync(htmlPath, html);
-}
-
-function injectBrandLogo(htmlName) {
-  const htmlPath = path.join(dist, htmlName);
-  if (!fs.existsSync(htmlPath)) return;
-  let html = fs.readFileSync(htmlPath, 'utf8');
-  const logo = '<img src="/assets/logo-zappala-header.svg" alt="Zappalá Advocacia &amp; Consultoria" width="300" height="88">';
-  html = html.replace(/(<a\b[^>]*class="[^"]*\bbrand\b[^"]*"[^>]*>)[\s\S]*?(<\/a>)/g, `$1${logo}$2`);
-  fs.writeFileSync(htmlPath, html);
-}
-
-function improveHomeSeo() {
-  const htmlPath = path.join(dist, 'index.html');
-  if (!fs.existsSync(htmlPath)) return;
-  let html = fs.readFileSync(htmlPath, 'utf8');
-
-  html = html
-    .replace('<title>Zappalá Advocacia &amp; Consultoria | Pessoas, famílias e negócios</title>', '<title>Zappalá Advocacia &amp; Consultoria | Advocacia em Belo Horizonte</title>')
-    .replace('<meta name="description" content="Zappalá Advocacia &amp; Consultoria. Atuação jurídica para pessoas, famílias e negócios em questões pessoais, patrimoniais e empresariais.">', '<meta name="description" content="Escritório de advocacia em Belo Horizonte com atuação em Direito Civil e Imobiliário, Família e Sucessões, Empresarial, Tributário, Trabalhista e Previdenciário.">')
-    .replace('<link rel="canonical" href="https://zappala.adv.br/index.html">', '<link rel="canonical" href="https://zappala.adv.br/">')
-    .replace('<meta property="og:title" content="Zappalá Advocacia &amp; Consultoria">', '<meta property="og:title" content="Zappalá Advocacia &amp; Consultoria | Belo Horizonte">')
-    .replace('<meta property="og:description" content="Advocacia para pessoas, famílias e negócios em questões pessoais, patrimoniais e empresariais.">', '<meta property="og:description" content="Atuação jurídica em Belo Horizonte para pessoas, famílias e empresas, em questões pessoais, patrimoniais e empresariais.">')
-    .replace('<meta property="og:url" content="https://zappala.adv.br/index.html">', '<meta property="og:url" content="https://zappala.adv.br/">')
-    .replace('<p class="hero__sub">Atuação processual em questões pessoais, patrimoniais e empresariais.</p>', '<p class="hero__sub">Atuação jurídica em Belo Horizonte, com atendimento presencial mediante agendamento e por videoconferência, em questões pessoais, patrimoniais e empresariais.</p>')
-    .replace('<div class="practice-group__areas">Contratos · Responsabilidade civil · Cobranças · Relações de consumo · Imóveis</div>', '<div class="practice-group__areas">Contratos · Responsabilidade civil · Cobranças · Relações de consumo · Imóveis</div><a class="text-link" href="direito-civil-patrimonial-belo-horizonte.html">Direito Civil e Patrimonial</a><br><a class="text-link" href="direito-imobiliario-belo-horizonte.html">Direito Imobiliário</a>')
-    .replace('<div class="practice-group__areas">Divórcio e união estável · Guarda e alimentos · Inventário e partilha · Planejamento sucessório</div>', '<div class="practice-group__areas">Divórcio e união estável · Guarda e alimentos · Inventário e partilha · Planejamento sucessório</div><a class="text-link" href="familia-sucessoes-belo-horizonte.html">Família e Sucessões</a><br><a class="text-link" href="inventario-belo-horizonte.html">Inventário e Partilha</a>')
-    .replace('<p class="contact-alt">Atendimento presencial mediante agendamento e atendimento por vídeo.</p>', '<p class="contact-alt">Atendimento presencial em Belo Horizonte/MG, mediante agendamento, e atendimento por videoconferência.</p>')
-    .replace('<div><div class="foot-title">Zappalá Advocacia &amp; Consultoria</div><p>Atuação jurídica para pessoas, famílias e empresas.</p></div>', '<div><div class="foot-title">Zappalá Advocacia &amp; Consultoria</div><p>Escritório de advocacia em Belo Horizonte/MG. Atendimento presencial mediante agendamento e por videoconferência.</p></div>');
-
-  if (!html.includes('<meta name="robots"')) {
-    html = html.replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<meta name="robots" content="index, follow">');
-  }
-
-  const jsonLd = `<script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'LegalService',
-    name: 'Zappalá Advocacia & Consultoria',
-    url: 'https://zappala.adv.br/',
-    logo: 'https://zappala.adv.br/assets/logo-zappala-header.svg',
-    telephone: '+55-31-98955-3592',
-    email: 'luiza.zappala.adv@gmail.com',
-    areaServed: { '@type': 'City', name: 'Belo Horizonte' },
-    knowsAbout: [
-      'Direito Civil',
-      'Direito Imobiliário',
-      'Direito de Família',
-      'Direito das Sucessões',
-      'Direito Empresarial',
-      'Direito Tributário',
-      'Direito do Trabalho',
-      'Direito Previdenciário'
-    ]
-  })}</script>`;
-  if (!html.includes('"@type":"LegalService"')) html = html.replace('</head>', `${jsonLd}\n</head>`);
-
-  fs.writeFileSync(htmlPath, html);
-}
-
-function improveSecondarySeo() {
-  const equipePath = path.join(dist, 'equipe.html');
-  if (fs.existsSync(equipePath)) {
-    let html = fs.readFileSync(equipePath, 'utf8');
-    html = html
-      .replace('<title>Equipe | Zappalá Advocacia &amp; Consultoria</title>', '<title>Equipe Jurídica em Belo Horizonte | Zappalá Advocacia</title>')
-      .replace('<meta name="description" content="Conheça a equipe da Zappalá Advocacia &amp; Consultoria.">', '<meta name="description" content="Conheça a equipe da Zappalá Advocacia & Consultoria, escritório com atendimento jurídico em Belo Horizonte/MG e por videoconferência.">');
-    if (!html.includes('<meta name="robots"')) html = html.replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<meta name="robots" content="index, follow">');
-    fs.writeFileSync(equipePath, html);
-  }
-
-  const infoPath = path.join(dist, 'informativos.html');
-  if (fs.existsSync(infoPath)) {
-    let html = fs.readFileSync(infoPath, 'utf8');
-    html = html
-      .replace('<title>Informativos | Zappalá Advocacia &amp; Consultoria</title>', '<title>Informativos Jurídicos | Zappalá Advocacia - Belo Horizonte</title>')
-      .replace('<meta name="description" content="Notícias, artigos e guias jurídicos da Zappalá Advocacia &amp; Consultoria.">', '<meta name="description" content="Artigos, notícias e guias jurídicos da Zappalá Advocacia & Consultoria, com atuação em Belo Horizonte/MG.">');
-    fs.writeFileSync(infoPath, html);
-  }
-}
-
-materializeHtml('index.html');
-materializeHtml('equipe.html');
-for (const page of practicePages) materializeHtml(page);
-
-for (const name of ['informativos.html', 'publicacao.html', '404.html', 'robots.txt']) {
-  const src = path.join(root, name);
-  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(dist, name));
-}
+if (fs.existsSync(path.join(root, 'robots.txt'))) fs.copyFileSync(path.join(root, 'robots.txt'), path.join(dist, 'robots.txt'));
 
 for (const dir of ['assets', 'admin']) {
   const src = path.join(root, dir);
   if (fs.existsSync(src)) fs.cpSync(src, path.join(dist, dir), { recursive: true });
 }
 
-const brandedPages = ['index.html', 'equipe.html', 'informativos.html', 'publicacao.html', '404.html', ...practicePages];
-for (const name of brandedPages) {
-  injectStylesheet(name, 'assets/site-atmosphere.css');
-  injectStylesheet(name, 'assets/brand-header.css');
-  injectBrandLogo(name);
+// fotos da equipe ficam guardadas em base64 em source/
+for (const name of ['gleice-zappala.webp', 'luiza-zappala.webp']) {
+  const packed = path.join(sourceDir, `${name}.b64`);
+  if (!fs.existsSync(packed)) throw new Error(`Foto ausente: ${name}`);
+  fs.writeFileSync(path.join(dist, 'assets', name), Buffer.from(fs.readFileSync(packed, 'utf8').trim(), 'base64'));
 }
-
-injectStylesheet('index.html', 'assets/team-section.css');
-improveHomeSeo();
-improveSecondarySeo();
-
-materializeBinary('assets/gleice-zappala.webp');
-materializeBinary('assets/luiza-zappala.webp');
 
 let posts = [];
 if (fs.existsSync(contentDir)) {
@@ -166,12 +138,9 @@ if (fs.existsSync(contentDir)) {
   }
 }
 posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+fs.mkdirSync(path.join(dist, 'data'), { recursive: true });
+fs.writeFileSync(path.join(dist, 'data', 'informativos.json'), JSON.stringify(posts, null, 2));
 
-const dataDir = path.join(dist, 'data');
-fs.mkdirSync(dataDir, { recursive: true });
-fs.writeFileSync(path.join(dataDir, 'informativos.json'), JSON.stringify(posts, null, 2));
-
-const baseUrl = 'https://zappala.adv.br';
 const urls = [
   `${baseUrl}/`,
   `${baseUrl}/equipe.html`,
@@ -179,7 +148,9 @@ const urls = [
   ...practicePages.map((page) => `${baseUrl}/${page}`),
   ...posts.map((post) => `${baseUrl}/publicacao.html?slug=${encodeURIComponent(post.slug)}`)
 ];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${url.replace(/&/g, '&amp;')}</loc></url>`).join('\n')}\n</urlset>\n`;
-fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
+fs.writeFileSync(
+  path.join(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.replace(/&/g, '&amp;')}</loc></url>`).join('\n')}\n</urlset>\n`
+);
 
-console.log(`Build concluído: ${posts.length} publicação(ões) em Informativos e ${practicePages.length} página(s) de atuação.`);
+console.log(`Build concluído: ${pages.length} páginas, ${posts.length} publicação(ões).`);
