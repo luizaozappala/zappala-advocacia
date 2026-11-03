@@ -60,7 +60,7 @@ const footer = `<footer><div class="wrap">
 <div><a class="foot-logo" href="/"><img src="/assets/logo-zappala-escuro.svg" alt="Zappalá advocacia &amp; consultoria" width="200" height="62"></a>
 <p class="foot-assinatura">Uma advocacia que começa pela atenção aos detalhes.</p></div>
 <div><h4>Contato</h4><p>WhatsApp <a href="https://wa.me/5531992377158">(31) 99237-7158</a><br>Ligações <a href="tel:+5531992377158">(31) 99237-7158</a><br><a href="mailto:luiza.zappala.adv@gmail.com">luiza.zappala.adv@gmail.com</a><br>Instagram <a href="https://www.instagram.com/zappala.adv/" target="_blank" rel="noopener">@zappala.adv</a></p>
-<p class="foot-address" style="margin-top:14px">Endereço para atendimento agendado:<br>Rua Maquiné, 261 — Belo Horizonte/MG</p>
+<p class="foot-address" style="margin-top:14px">Endereço para atendimento agendado:<br>Rua Maquiné, 261 — Belo Horizonte/MG<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Maquin%C3%A9%2C%20261%2C%20Belo%20Horizonte%2C%20MG">Consultar endereço no mapa</a></p>
 <p style="margin-top:14px">Atendimento presencial somente com hora marcada.<br>Por vídeo em todo o Brasil.</p></div>
 <div><h4>Navegação</h4><p><a href="/#areas">Em que ajudamos</a><br><a href="/#retorno">Acompanhamento do caso</a><br><a href="/#atendimento">Como funciona</a><br><a href="/equipe.html">Equipe</a><br><a href="/informativos.html">Informativos</a></p></div>
 </div>
