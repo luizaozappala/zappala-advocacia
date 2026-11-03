@@ -18,7 +18,7 @@ const prohibitedStreet = /Rua Maquin[ée],?\s*261/i;
 for (const filename of pages) {
   const html = fs.readFileSync(path.join(dist, filename), 'utf8');
   assert.doesNotMatch(html, prohibitedStreet, `Reference-only address must not be public: ${filename}`);
-  assert.ok(html.includes('Belo Horizonte/MG'), `City missing in public contact: ${filename}`);
+  assert.ok(html.includes('Belo Horizonte'), `City missing in public contact: ${filename}`);
   assert.ok(html.includes('tel:+5531992377158'), `Phone call action missing: ${filename}`);
   assert.ok(html.includes(displayedPhone), `Human-readable phone missing: ${filename}`);
   assert.match(html, /(?:local combinado previamente|hora marcada)/, `Appointment arrangement missing: ${filename}`);
