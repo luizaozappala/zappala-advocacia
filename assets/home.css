@@ -159,3 +159,111 @@
 .garantias dt{color:var(--grafite)}
 .garantias dd{color:var(--apoio)}
 .equipe-faixa{border-top:1px solid var(--linha)}
+
+/* =========================================================
+   Refinamento: respiro, luz em diagonal, uma entrada orquestrada
+   ========================================================= */
+
+/* Respiro */
+.abertura{padding:200px 0 128px}
+.abertura__topo{padding-bottom:88px;gap:80px}
+.duvidas__intro{padding:22px 0}
+.duvida summary{padding:34px 0 32px}
+.compromisso-faixa{padding:152px 0 144px}
+.garantias{margin-top:88px;gap:48px}
+.etapas-faixa,.equipe-faixa,.contato-faixa{padding:136px 0}
+.passos{margin-top:56px;gap:40px}
+.equipe-faixa__grid{gap:56px}
+.contato-faixa__grid{gap:96px}
+
+/* Luz: canto + feixe diagonal no ângulo do símbolo + brilho baixo */
+.abertura{
+  background:
+    radial-gradient(60% 55% at 92% 108%,rgba(75,108,124,.32) 0%,rgba(75,108,124,0) 70%),
+    radial-gradient(120% 140% at 0% 0%,#3A4E57 0%,#2E3F47 20%,#26353C 40%,var(--grafite) 62%,#1A252B 100%)
+}
+.abertura::after{
+  content:"";position:absolute;pointer-events:none;inset:-20% -10%;
+  background:linear-gradient(130deg,rgba(251,252,252,0) 38%,rgba(251,252,252,.055) 47%,rgba(251,252,252,.015) 53%,rgba(251,252,252,0) 60%);
+}
+.abertura .duvidas{border-top:1px solid rgba(251,252,252,.55)}
+
+/* Perguntas: realce ao passar o mouse, abertura suave */
+.abertura .duvida{position:relative}
+.abertura .duvida summary{position:relative;transition:padding-left .35s cubic-bezier(.2,.7,.2,1)}
+.abertura .duvida summary::before{
+  content:"";position:absolute;inset:0 -28px;z-index:-1;opacity:0;
+  background:linear-gradient(90deg,rgba(174,190,198,.10),rgba(174,190,198,0) 70%);
+  transition:opacity .35s ease
+}
+.abertura .duvida summary:hover::before,.abertura .duvida[open] summary::before{opacity:1}
+.abertura .duvida summary:hover{padding-left:12px}
+.abertura .duvida summary:hover .duvida__pergunta{color:var(--branco)}
+.abertura .duvida__corpo{animation:corpo-in .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes corpo-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* Entrada: título, texto e perguntas em sequência (uma vez, no carregamento) */
+@media (prefers-reduced-motion:no-preference){
+  .abertura h1,.abertura__lado,.duvidas__intro,.abertura .duvida,.duvidas__fim{
+    animation:entra .9s cubic-bezier(.2,.7,.2,1) both
+  }
+  .abertura__lado{animation-delay:.12s}
+  .duvidas__intro{animation-delay:.24s}
+  .abertura .duvida:nth-of-type(1){animation-delay:.30s}
+  .abertura .duvida:nth-of-type(2){animation-delay:.36s}
+  .abertura .duvida:nth-of-type(3){animation-delay:.42s}
+  .abertura .duvida:nth-of-type(4){animation-delay:.48s}
+  .abertura .duvida:nth-of-type(5){animation-delay:.54s}
+  .abertura .duvida:nth-of-type(6){animation-delay:.60s}
+  .abertura .duvida:nth-of-type(7){animation-delay:.66s}
+  .duvidas__fim{animation-delay:.74s}
+  .abertura .duvidas{animation:linha .9s cubic-bezier(.2,.7,.2,1) .18s both}
+}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes linha{from{border-top-color:rgba(251,252,252,0)}to{border-top-color:rgba(251,252,252,.55)}}
+@media (prefers-reduced-motion:reduce){
+  .abertura .duvida summary,.abertura .duvida summary::before{transition:none}
+  .abertura .duvida__corpo{animation:none}
+  .abertura .duvida summary:hover{padding-left:0}
+}
+
+/* Compromisso: névoa que se dissolve no branco, símbolo em relevo claro */
+.compromisso-faixa{background:linear-gradient(180deg,var(--nevoa) 0%,#EDF1F3 55%,var(--branco) 100%)}
+.compromisso-faixa::after{
+  background-image:url("/assets/simbolo-zappala-relevo-claro.svg");opacity:1;width:560px;height:560px;right:-20px;
+  filter:drop-shadow(0 24px 40px rgba(31,44,51,.10))
+}
+.home .compromisso-faixa h2{max-width:14ch;font-size:clamp(36px,4.6vw,64px)!important}
+.compromisso-faixa__sub{margin-top:32px}
+
+/* Etapas: o fio de cada passo é um degradê grafite → pedra */
+.passos li{border-top:0;padding-top:22px}
+.passos li::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--grafite),var(--pedra) 70%,rgba(75,108,124,.25))}
+
+/* Retratos com luz suave por cima */
+.retrato{position:relative}
+.retrato::after{content:"";position:absolute;left:0;right:0;top:0;aspect-ratio:4/5;pointer-events:none;
+  background:linear-gradient(180deg,rgba(31,44,51,0) 55%,rgba(31,44,51,.18) 100%)}
+
+/* Contato: fundo em degradê e cartão com sombra longa e suave */
+.contato-faixa{background:linear-gradient(160deg,var(--nevoa) 0%,#E9EEF0 50%,#DCE4E8 100%)}
+.contato-faixa__form{
+  border-radius:6px;padding:40px;
+  box-shadow:0 1px 2px rgba(31,44,51,.06),0 12px 28px -8px rgba(31,44,51,.12),0 40px 80px -24px rgba(31,44,51,.18)
+}
+
+@media (max-width:980px){
+  .abertura{padding:168px 0 96px}
+  .abertura__topo{gap:28px;padding-bottom:56px}
+  .compromisso-faixa{padding:104px 0}
+  .etapas-faixa,.equipe-faixa,.contato-faixa{padding:96px 0}
+  .compromisso-faixa::after{width:360px;height:360px;right:-150px}
+}
+@media (max-width:720px){
+  .abertura{padding:150px 0 72px}
+  .duvida summary{padding:24px 0 22px}
+  .abertura .duvida summary:hover{padding-left:0}
+  .compromisso-faixa{padding:80px 0}
+  .etapas-faixa,.equipe-faixa,.contato-faixa{padding:72px 0}
+  .contato-faixa__form{padding:24px}
+}
