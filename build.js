@@ -88,6 +88,7 @@ function transform(page, html) {
   // Atalho para leitores de tela/teclado em todas as páginas.
   html = html.replace(/<body([^>]*)>/i, '<body$1><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>');
   html = html.replace(/<main\b(?![^>]*\bid\s*=)/i, '<main id="conteudo"');
+  html = html.replace(/<main\b(?![^>]*\btabindex\s*=)/i, '<main tabindex="-1"');
   html = html.replace(/<header class="masthead">[\s\S]*?<\/header>/, header(page));
   html = html.replace(/<footer>[\s\S]*?<\/footer>/, footer);
   // página individual de publicação usa um cabeçalho próprio (.mast)
