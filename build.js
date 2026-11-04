@@ -9,6 +9,8 @@ const dist = path.join(root, 'dist');
 const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
 const baseUrl = 'https://zappala.adv.br';
+// Tag Google Analytics 4: carregada somente após consentimento explícito.
+// O JS de métricas guarda o identificador público G-V9DJTWBY1C.
 const localAddress = Object.freeze({
   '@type': 'PostalAddress',
   streetAddress: 'Rua Maquiné, 261',
@@ -153,6 +155,13 @@ function transform(page, html) {
     const ld = `<script type="application/ld+json">${JSON.stringify(legalService)}</script>`;
     html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
     html = html.replace('</head>', `${ld}\n</head>`);
+  }
+  // Política de consentimento: não executar Google Analytics antes do aceite.
+  if (page !== '404.html') {
+    html = html.replace('</head>',
+      '<link rel="stylesheet" href="/assets/analytics-consent.css">\n</head>');
+    html = html.replace('</body>',
+      '<script defer src="/assets/analytics-consent.js"></script>\n</body>');
   }
   return html;
 }

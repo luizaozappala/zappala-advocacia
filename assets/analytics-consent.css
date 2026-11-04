@@ -1,0 +1,11 @@
+/* Métricas opcionais — estilo discreto da identidade v2. */
+.zp-consent {position:fixed;z-index:10000;inset-inline:16px;bottom:16px;max-width:620px;margin-inline:auto;background:#1F2C33;color:#FBFCFC;border:1px solid #4B6C7C;box-shadow:0 8px 28px rgba(0,0,0,.2);padding:22px 24px;font:inherit;line-height:1.5}
+.zp-consent__title {font-size:17px;font-weight:700;margin:0 0 8px}
+.zp-consent__text {font-size:14px;max-width:60ch;margin:0}
+.zp-consent__actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.zp-consent__actions button {cursor:pointer;border:1px solid #FBFCFC;padding:10px 15px;min-height:44px;font:inherit;font-size:14px}
+.zp-consent__accept {background:#FBFCFC;color:#1F2C33}
+.zp-consent__deny {background:transparent;color:#FBFCFC}
+.zp-consent__settings {display:block;cursor:pointer;margin:12px auto 0;background:transparent;border:0;color:inherit;text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:13px;padding:10px}
+.zp-consent__settings:focus-visible,.zp-consent__actions button:focus-visible {outline:3px solid #AEBEC6;outline-offset:3px}
+@media(max-width:520px){.zp-consent{inset-inline:8px;bottom:8px;padding:18px}.zp-consent__actions{flex-direction:column}.zp-consent__actions button{width:100%}}
