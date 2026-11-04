@@ -9,6 +9,12 @@ const dist = path.join(root, 'dist');
 const sourceDir = path.join(root, 'source');
 const contentDir = path.join(root, 'content', 'informativos');
 const baseUrl = 'https://zappala.adv.br';
+// ID público do contêiner GTM, definido como variável de BUILD no Cloudflare.
+// Sem ID, nenhum código de métricas ou banner é injetado.
+const gtmContainerId = (process.env.GTM_CONTAINER_ID || '').trim();
+if (gtmContainerId && !/^GTM-[A-Z0-9]+$/.test(gtmContainerId)) {
+  throw new Error('GTM_CONTAINER_ID inválido; esperado GTM-XXXXXXXX.');
+}
 const localAddress = Object.freeze({
   '@type': 'PostalAddress',
   streetAddress: 'Rua Maquiné, 261',
@@ -153,6 +159,15 @@ function transform(page, html) {
     const ld = `<script type="application/ld+json">${JSON.stringify(legalService)}</script>`;
     html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
     html = html.replace('</head>', `${ld}\n</head>`);
+  }
+  // Analytics carregado somente depois da escolha expressa do visitante.
+  // O código de consentimento e os eventos de contato ficam no assets.
+  if (gtmContainerId && page !== '404.html') {
+    html = html.replace('</head>',
+      '<meta name="zappala-gtm-container" content="' + gtmContainerId + '">\\n' +
+      '<link rel="stylesheet" href="/assets/analytics-consent.css">\\n</head>');
+    html = html.replace('</body>',
+      '<script defer src="/assets/analytics-consent.js"></script>\\n</body>');
   }
   return html;
 }
