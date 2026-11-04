@@ -31,7 +31,22 @@ const pages = [
   'direito-previdenciario.html',
   'direito-consumidor.html',
   'direito-transito.html',
-  'isencao-ipva-autismo-pcd.html'
+  'isencao-ipva-autismo-pcd.html',
+  'suspensao-cnh.html',
+  'cassacao-cnh.html',
+  'lei-seca.html',
+  'recusa-bafometro.html',
+  'recurso-multas-transito.html',
+  'pontos-cnh.html',
+  'acidente-transito-indenizacao.html',
+  'transferencia-veiculo-multas.html',
+  'divorcio-partilha.html',
+  'guarda-convivencia.html',
+  'pensao-alimenticia.html',
+  'uniao-estavel.html',
+  'usucapiao.html',
+  'cobranca-indevida-negativacao.html',
+  'golpe-pix.html'
 ];
 const practicePages = pages.slice(5);
 
@@ -136,7 +151,7 @@ function transform(page, html) {
 
   // Avoid sending visitors and crawlers through Cloudflare's .html redirects.
   html = html.replace(/href="(?:\.\/|\/)?index\.html(#[^"]*)?"/g, (_m, hash = '') => 'href="/' + hash + '"');
-  html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito|isencao-ipva-autismo-pcd)\.html(#[^"]*)?"/g,
+  html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito|isencao-ipva-autismo-pcd|suspensao-cnh|cassacao-cnh|lei-seca|recusa-bafometro|recurso-multas-transito|pontos-cnh|acidente-transito-indenizacao|transferencia-veiculo-multas|divorcio-partilha|guarda-convivencia|pensao-alimenticia|uniao-estavel|usucapiao|cobranca-indevida-negativacao|golpe-pix)\.html(#[^"]*)?"/g,
     (_m, route, hash = '') => 'href="/' + route + hash + '"');
   html = html.replace(/publicacao\.html\?slug=/g, '/publicacao?slug=');
   // página individual de publicação usa um cabeçalho próprio (.mast)
