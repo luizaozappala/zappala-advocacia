@@ -3,6 +3,8 @@
 **Estado:** implementação de código preparada numa branch de revisão. Não está publicada em produção. **Nenhuma coleta começa até que exista um contêiner GTM válido, tags configuradas e autorização do visitante.**
 
 **Identificação do site:** https://zappala.adv.br/  
+**ID de medição GA4 confirmado (fluxo Web Site Zappalá):** `G-V9DJTWBY1C`  
+**Código do fluxo GA4:** `16267072400`  
 **Repositório:** `luizaozappala/zappala-advocacia`  
 **Contato comercial:** (31) 99237-7158.
 
