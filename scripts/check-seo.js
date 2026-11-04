@@ -8,7 +8,9 @@ const base = 'https://zappala.adv.br';
 const indexablePages = [
   'index.html', 'equipe.html',
   'direito-civil-patrimonial.html', 'direito-imobiliario.html',
-  'familia-sucessoes.html', 'inventario-partilha.html'
+  'familia-sucessoes.html', 'inventario-partilha.html',
+  'direito-trabalho.html', 'direito-previdenciario.html', 'direito-consumidor.html', 'direito-transito.html', 'isencao-ipva-autismo-pcd.html',
+  'suspensao-cnh.html', 'cassacao-cnh.html', 'lei-seca.html', 'recusa-bafometro.html', 'recurso-multas-transito.html', 'pontos-cnh.html', 'acidente-transito-indenizacao.html', 'transferencia-veiculo-multas.html', 'divorcio-partilha.html', 'guarda-convivencia.html', 'pensao-alimenticia.html', 'uniao-estavel.html', 'usucapiao.html', 'cobranca-indevida-negativacao.html', 'golpe-pix.html'
 ];
 const posts = JSON.parse(fs.readFileSync(path.join(dist, 'data', 'informativos.json'), 'utf8'));
 const publishedPages = posts.length ? [...indexablePages, 'informativos.html'] : indexablePages;
@@ -24,7 +26,7 @@ for (const page of publishedPages) {
     `Missing description: ${page}`);
   assert.doesNotMatch(html, /<meta\s+name="robots"\s+content="[^"]*noindex/i,
     `Indexable page marked noindex: ${page}`);
-  assert.doesNotMatch(html, /href="(?:\.\/|\/)?(?:index|equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha)\.html(?:#|")/,
+  assert.doesNotMatch(html, /href="(?:\.\/|\/)?(?:index|equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito|isencao-ipva-autismo-pcd|suspensao-cnh|cassacao-cnh|lei-seca|recusa-bafometro|recurso-multas-transito|pontos-cnh|acidente-transito-indenizacao|transferencia-veiculo-multas|divorcio-partilha|guarda-convivencia|pensao-alimenticia|uniao-estavel|usucapiao|cobranca-indevida-negativacao|golpe-pix)\.html(?:#|")/,
     `Internal link still points to a redirected .html URL: ${page}`);
   siteUrls.push(expected);
 }
