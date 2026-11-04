@@ -164,10 +164,10 @@ function transform(page, html) {
   // O código de consentimento e os eventos de contato ficam no assets.
   if (gtmContainerId && page !== '404.html') {
     html = html.replace('</head>',
-      '<meta name="zappala-gtm-container" content="' + gtmContainerId + '">\\n' +
-      '<link rel="stylesheet" href="/assets/analytics-consent.css">\\n</head>');
+      '<meta name="zappala-gtm-container" content="' + gtmContainerId + '">\n' +
+      '<link rel="stylesheet" href="/assets/analytics-consent.css">\n</head>');
     html = html.replace('</body>',
-      '<script defer src="/assets/analytics-consent.js"></script>\\n</body>');
+      '<script defer src="/assets/analytics-consent.js"></script>\n</body>');
   }
   return html;
 }
