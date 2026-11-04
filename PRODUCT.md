@@ -31,7 +31,7 @@ Sucesso: a pessoa manda uma mensagem pelo WhatsApp (31) 99237-7158 contando brev
 
 - Primeiro contato pelo WhatsApp, em poucas linhas, informando se há prazo correndo; sem documentos sensíveis nessa etapa.
 - O escritório confere conflito de interesses antes de analisar o caso.
-- Conversa presencial com hora marcada na Rua Maquiné, 261, Belo Horizonte/MG, ou por vídeo para todo o Brasil. Este é o endereço público fornecido pelo escritório em 03/11/2026; não publicar bairro, CEP ou horários fixos sem confirmação adicional.
+- Conversa presencial em Belo Horizonte, com local previamente combinado, ou por vídeo para todo o Brasil. **A Rua Maquiné, 261 é apenas um endereço de referência e NÃO é local de atendimento**. Não publicar endereço, mapa, horários fixos ou localização de escritório sem confirmação de operação real.
 - Documentos do mundo do público: carteira de trabalho, contracheques, termo de rescisão, carta do INSS, extrato do CNIS, laudos, certidões, notificação do Detran, contratos, boletos, prints, comprovantes do Pix.
 - Público fala e escreve assim: "tirou todas as minhas dúvidas", "me manteve informada", "processo parado", "não responde no zap", "nome sujo", "golpe do Pix", "perder a carteira", "pensão do meu filho".
 
