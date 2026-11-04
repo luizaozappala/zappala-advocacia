@@ -1,0 +1,22 @@
+name: Validar site e SEO
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feat/paginas-seo-juridico-2026]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build e verificações de SEO
+        run: npm run build
+      - name: Verificar páginas geradas
+        run: |
+          test -f dist/isencao-ipva-autismo-pcd.html
+          test -f dist/suspensao-cnh.html
+          test -f dist/golpe-pix.html
+          grep -q 'isencao-ipva-autismo-pcd' dist/sitemap.xml
