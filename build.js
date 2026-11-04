@@ -30,7 +30,8 @@ const pages = [
   'direito-trabalho.html',
   'direito-previdenciario.html',
   'direito-consumidor.html',
-  'direito-transito.html'
+  'direito-transito.html',
+  'isencao-ipva-autismo-pcd.html'
 ];
 const practicePages = pages.slice(5);
 
@@ -135,7 +136,7 @@ function transform(page, html) {
 
   // Avoid sending visitors and crawlers through Cloudflare's .html redirects.
   html = html.replace(/href="(?:\.\/|\/)?index\.html(#[^"]*)?"/g, (_m, hash = '') => 'href="/' + hash + '"');
-  html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito)\.html(#[^"]*)?"/g,
+  html = html.replace(/href="(?:\.\/|\/)?(equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito|isencao-ipva-autismo-pcd)\.html(#[^"]*)?"/g,
     (_m, route, hash = '') => 'href="/' + route + hash + '"');
   html = html.replace(/publicacao\.html\?slug=/g, '/publicacao?slug=');
   // página individual de publicação usa um cabeçalho próprio (.mast)
