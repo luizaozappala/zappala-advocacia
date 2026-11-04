@@ -9,7 +9,7 @@ const indexablePages = [
   'index.html', 'equipe.html',
   'direito-civil-patrimonial.html', 'direito-imobiliario.html',
   'familia-sucessoes.html', 'inventario-partilha.html',
-  'direito-trabalho.html', 'direito-previdenciario.html', 'direito-consumidor.html', 'direito-transito.html'
+  'direito-trabalho.html', 'direito-previdenciario.html', 'direito-consumidor.html', 'direito-transito.html', 'isencao-ipva-autismo-pcd.html'
 ];
 const posts = JSON.parse(fs.readFileSync(path.join(dist, 'data', 'informativos.json'), 'utf8'));
 const publishedPages = posts.length ? [...indexablePages, 'informativos.html'] : indexablePages;
@@ -25,7 +25,7 @@ for (const page of publishedPages) {
     `Missing description: ${page}`);
   assert.doesNotMatch(html, /<meta\s+name="robots"\s+content="[^"]*noindex/i,
     `Indexable page marked noindex: ${page}`);
-  assert.doesNotMatch(html, /href="(?:\.\/|\/)?(?:index|equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito)\.html(?:#|")/,
+  assert.doesNotMatch(html, /href="(?:\.\/|\/)?(?:index|equipe|informativos|direito-civil-patrimonial|direito-imobiliario|familia-sucessoes|inventario-partilha|direito-trabalho|direito-previdenciario|direito-consumidor|direito-transito|isencao-ipva-autismo-pcd)\.html(?:#|")/,
     `Internal link still points to a redirected .html URL: ${page}`);
   siteUrls.push(expected);
 }
